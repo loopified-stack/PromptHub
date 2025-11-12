@@ -1,0 +1,125 @@
+
+:root {
+  --bg: #0b0c10;
+  --panel: #11141a;
+  --panel-2: #171b22;
+  --text: #e6e6e6;
+  --muted: #9aa4b2;
+  --accent: #6ae3ff;
+  --accent-2: #9bffb8;
+  --border: #222a36;
+  --radius: 14px;
+}
+
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; height: 100%; }
+body {
+  font: 16px/1.45 system-ui, -apple-system, Segoe UI, Roboto, Inter, sans-serif;
+  background: linear-gradient(160deg, var(--bg), #0e1117 40%, #0b1220);
+  color: var(--text);
+}
+
+header {
+  max-width: 1100px;
+  margin: 32px auto 0;
+  padding: 16px 20px;
+}
+h1 { margin: 0 0 8px; font-size: 28px; letter-spacing: 0.3px; }
+.sub { margin: 0 0 16px; color: var(--muted); }
+.controls {
+  display: flex;
+  gap: 8px;
+}
+.controls input[type="search"] {
+  flex: 1;
+  padding: 12px 14px;
+  background: var(--panel);
+  border: 1px solid var(--border);
+  color: var(--text);
+  border-radius: var(--radius);
+  outline: none;
+}
+.controls button {
+  padding: 12px 14px;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  background: var(--panel-2);
+  color: var(--text);
+  cursor: pointer;
+}
+.controls button:hover { border-color: #2b3546; }
+
+main {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 8px 20px 40px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 14px;
+}
+
+.card {
+  background: radial-gradient(120% 120% at 0% 0%, #0d1522, #0c121b 60%, #0a0f16 100%);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 14px;
+  box-shadow: 0 0 0 1px rgba(255,255,255,0.02) inset, 0 30px 60px rgba(0,0,0,0.35);
+}
+
+.card-head {
+  display: flex;
+  align-items: start;
+  gap: 10px;
+  justify-content: space-between;
+}
+.title {
+  margin: 0;
+  font-size: 16px;
+  line-height: 1.25;
+}
+.actions {
+  display: flex; gap: 6px; flex: 0 0 auto;
+}
+.card .actions button {
+  padding: 8px 10px;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  background: #101725;
+  color: var(--text);
+  cursor: pointer;
+  font-size: 13px;
+}
+.card .actions button:hover { border-color: #2b3546; }
+
+pre.prompt {
+  margin: 10px 0 0;
+  max-height: 220px;
+  overflow: auto;
+  background: #0b1220;
+  border: 1px solid #0a1528;
+  border-radius: 12px;
+  padding: 12px;
+  scrollbar-width: thin;
+  scrollbar-color: #2a3650 #0b1220;
+}
+pre.collapsed { 
+  max-height: 88px;
+  mask-image: linear-gradient(#000 70%, transparent);
+}
+pre code { 
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+  font-size: 13px;
+}
+
+.muted { color: var(--muted); margin: 10px 0 16px; }
+.hidden { display: none; }
+
+@media (max-width: 640px) {
+  header { padding: 16px; }
+  main { padding: 8px 16px 32px; }
+}

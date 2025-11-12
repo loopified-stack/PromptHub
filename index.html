@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Prompt Hub</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1>Prompt Hub</h1>
+    <p class="sub">Search, preview, and copy your prompts instantly.</p>
+    <div class="controls">
+      <input id="search" type="search" placeholder="Search title or text…" aria-label="Search" />
+      <button id="clear">Clear</button>
+    </div>
+  </header>
+
+  <main>
+    <div id="stats" class="muted"></div>
+    <div id="list" class="grid"></div>
+  </main>
+
+  <template id="card-tpl">
+    <article class="card">
+      <div class="card-head">
+        <h2 class="title"></h2>
+        <div class="actions">
+          <button class="copy">Copy</button>
+          <button class="toggle">Expand</button>
+        </div>
+      </div>
+      <pre class="prompt"><code></code></pre>
+    </article>
+  </template>
+
+  <script src="script.js"></script>
+</body>
+</html>
