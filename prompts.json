@@ -132,7 +132,7 @@
     "created_at": "2025-11-15",
     "source": { "type": "", "label": "", "url": "" },
     "featured": false
-  }
+  },
   {
   "id": "chat-summary-article-generator",
   "title": "Chat Summary Article Generator",
@@ -152,7 +152,7 @@
   "created_at": "2025-11-15",
   "source": { "type": "", "label": "", "url": "" },
   "featured": false
-}
+},
 {
   "id": "chat-history-knowledge-extractor",
   "title": "Chat History Knowledge Extractor",
