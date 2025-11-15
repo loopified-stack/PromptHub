@@ -1,86 +1,134 @@
+// GLOBAL STATE
+let prompts = [];
+let state = {
+  category: "All",
+  search: "",
+  sort: "newest"
+};
 
-const listEl = document.getElementById('list');
-const searchEl = document.getElementById('search');
-const clearBtn = document.getElementById('clear');
-const statsEl = document.getElementById('stats');
+// DOM REFS
+const categoriesEl = document.getElementById("categories");
+const gridEl = document.getElementById("promptGrid");
+const searchEl = document.getElementById("search");
+const sortEl = document.getElementById("sort");
 
-let allPrompts = [];
-let filtered = [];
+// LOAD DATA
+async function loadPrompts() {
+  const res = await fetch("prompts.json");
+  prompts = await res.json();
+  renderCategories();
+  renderGrid();
+}
 
-const createCard = (item) => {
-  const tpl = document.getElementById('card-tpl').content.cloneNode(true);
-  const titleEl = tpl.querySelector('.title');
-  const codeEl = tpl.querySelector('pre.prompt code');
-  const preEl = tpl.querySelector('pre.prompt');
-  const copyBtn = tpl.querySelector('.copy');
-  const toggleBtn = tpl.querySelector('.toggle');
+// BUILD CATEGORY CHIPS
+function renderCategories() {
+  const cats = ["All", ...new Set(prompts.map(p => p.category))];
+  categoriesEl.innerHTML = "";
 
-  titleEl.textContent = item.title;
-  codeEl.textContent = item.prompt;
-  preEl.classList.add('collapsed');
+  cats.forEach(cat => {
+    const chip = document.createElement("button");
+    chip.className = "chip" + (state.category === cat ? " active" : "");
+    chip.textContent = cat === "All" ? "🔥 All" : cat;
+    chip.addEventListener("click", () => {
+      state.category = cat;
+      renderCategories();
+      renderGrid();
+    });
 
-  copyBtn.addEventListener('click', async () => {
-    try {
-      await navigator.clipboard.writeText(item.prompt);
-      copyBtn.textContent = 'Copied!';
-      setTimeout(() => (copyBtn.textContent = 'Copy'), 1000);
-    } catch (e) {
-      // Fallback: select the text manually
-      const range = document.createRange();
-      range.selectNodeContents(codeEl);
-      const sel = window.getSelection();
-      sel.removeAllRanges();
-      sel.addRange(range);
-      try { document.execCommand('copy'); } catch {}
-      sel.removeAllRanges();
-      copyBtn.textContent = 'Copied!';
-      setTimeout(() => (copyBtn.textContent = 'Copy'), 1000);
-    }
+    categoriesEl.appendChild(chip);
   });
+}
 
-  toggleBtn.addEventListener('click', () => {
-    if (preEl.classList.contains('collapsed')) {
-      preEl.classList.remove('collapsed');
-      toggleBtn.textContent = 'Collapse';
-    } else {
-      preEl.classList.add('collapsed');
-      toggleBtn.textContent = 'Expand';
-    }
+// SORTING LOGIC
+function sortList(list) {
+  if (state.sort === "az") return list.sort((a,b)=>a.title.localeCompare(b.title));
+  if (state.sort === "za") return list.sort((a,b)=>b.title.localeCompare(a.title));
+  return list.sort((a,b)=> (b.created_at || "").localeCompare(a.created_at || ""));
+}
+
+// FILTERING LOGIC
+function filterList() {
+  let list = [...prompts];
+
+  if (state.category !== "All") {
+    list = list.filter(p => p.category === state.category);
+  }
+
+  if (state.search.trim()) {
+    const q = state.search.toLowerCase();
+    list = list.filter(p =>
+      p.title.toLowerCase().includes(q) ||
+      (p.description || "").toLowerCase().includes(q) ||
+      (p.model || "").toLowerCase().includes(q) ||
+      (p.use_case || "").toLowerCase().includes(q) ||
+      (p.body || "").toLowerCase().includes(q) ||
+      (p.tags || []).some(tag => tag.toLowerCase().includes(q))
+    );
+  }
+
+  return sortList(list);
+}
+
+// RENDER GRID
+function renderGrid() {
+  const list = filterList();
+  gridEl.innerHTML = "";
+
+  list.forEach(p => {
+    const card = document.createElement("article");
+    card.className = "card";
+
+    // HEADER
+    card.innerHTML = `
+      <div class="card-header">
+        <div class="card-title">${p.title}</div>
+        <div class="card-category">${p.emoji || ""} ${p.category}</div>
+      </div>
+      <div class="meta-row">
+        <span class="meta-pill">Model: ${p.model}</span>
+        <span class="meta-pill">Use case: ${p.use_case}</span>
+      </div>
+      <div class="card-desc">${p.description || ""}</div>
+      <div class="tags">${(p.tags || []).map(t=>`<span class="tag">#${t}</span>`).join("")}</div>
+      ${p.source && p.source.label ? 
+        `<div class="source">From: <a href="${p.source.url}" target="_blank">${p.source.label}</a></div>` 
+        : ""}
+      <div class="card-actions">
+        <button class="toggle">Show prompt</button>
+        <button class="copy primary">Copy</button>
+      </div>
+      <pre class="prompt-body">${p.body}</pre>
+    `;
+
+    // Toggle body
+    card.querySelector(".toggle").addEventListener("click", (e)=>{
+      const body = card.querySelector(".prompt-body");
+      const open = body.classList.toggle("open");
+      e.target.textContent = open ? "Hide prompt" : "Show prompt";
+    });
+
+    // Copy
+    card.querySelector(".copy").addEventListener("click", async (e)=>{
+      await navigator.clipboard.writeText(p.body);
+      const old = e.target.textContent;
+      e.target.textContent = "Copied!";
+      setTimeout(()=> e.target.textContent = old, 1200);
+    });
+
+    gridEl.appendChild(card);
   });
+}
 
-  return tpl;
-};
+// SEARCH + SORT EVENTS
+searchEl.addEventListener("input", () => {
+  state.search = searchEl.value;
+  renderGrid();
+});
+sortEl.addEventListener("change", () => {
+  state.sort = sortEl.value;
+  renderGrid();
+});
 
-const render = (items) => {
-  listEl.innerHTML = '';
-  const frag = document.createDocumentFragment();
-  items.forEach(p => frag.appendChild(createCard(p)));
-  listEl.appendChild(frag);
-  statsEl.textContent = `${items.length} prompts ${items.length !== allPrompts.length ? `• filtered from ${allPrompts.length}` : ''}`;
-};
+// START
+loadPrompts();
 
-const normalize = (s) => (s || '').toLowerCase()
-  .normalize('NFD').replace(/\p{Diacritic}/gu, '');
-
-const doFilter = () => {
-  const q = normalize(searchEl.value);
-  if (!q) { filtered = allPrompts.slice(); render(filtered); return; }
-  filtered = allPrompts.filter(p => 
-    normalize(p.title).includes(q) || normalize(p.prompt).includes(q)
-  );
-  render(filtered);
-};
-
-const init = async () => {
-  const res = await fetch('prompts.json');
-  allPrompts = await res.json();
-  // sort by title
-  allPrompts.sort((a, b) => a.title.localeCompare(b.title, undefined, { sensitivity: 'base' }));
-  filtered = allPrompts.slice();
-  render(filtered);
-};
-
-searchEl.addEventListener('input', doFilter);
-clearBtn.addEventListener('click', () => { searchEl.value = ''; doFilter(); });
-
-init();
