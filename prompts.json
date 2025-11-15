@@ -1,19 +1,137 @@
 [
   {
-    "id": "nano-banana-frakta",
-    "title": "Nano Banana – Fill the FRAKTA",
-    "category": "Experiments",
-    "emoji": "🍌",
+    "id": "image-to-dalle-prompt-rebuilder",
+    "title": "Image-to-DALL·E Prompt Rebuilder",
+    "category": "Images",
+    "emoji": "🧩",
+    "model": "DALL·E / Image",
+    "use_case": "Reverse prompt engineering for images",
+    "description": "Analyzes any image and generates a highly detailed DALL·E prompt that rebuilds the scene: composition, style, colors, lighting, textures, objects, background, and visible text.",
+    "body": "When I send you an image, analyze it visually and semantically with maximum detail and accuracy. Return two things:\n\n1. A concise and descriptive **title** that summarizes the visual style and main content of the image in a few words.\n2. A complete, detailed **prompt** that I can use directly in DALL·E to generate an image that closely matches the original.\n\nFor the prompt, ensure you include: an exact description of the composition, the visual style (e.g. digital painting, photorealistic, 3D render, sketch, etc.), color scheme, perspective, lighting sources and intensity, textures, all visible objects and details (including people, clothing, facial expressions, posture), background elements, and any visible text (transcribe this exactly). Use structured, precise language and describe the scene in a way that allows DALL·E to recreate the image as accurately as possible. Present the prompt in a clearly formatted Markdown code block.",
+    "tags": ["reverse prompt", "image analysis", "dalle", "recreation", "style transfer", "visual prompt"],
+    "created_at": "2025-11-15",
+    "source": { "type": "", "label": "", "url": "" },
+    "featured": true
+  },
+
+  {
+    "id": "iterative-visual-prompt-generator",
+    "title": "Iterative Visual Prompt Generator",
+    "category": "Images",
+    "emoji": "🎬",
+    "model": "ChatGPT + Image Models",
+    "use_case": "Iterative image prompt refinement",
+    "description": "An iterative visual prompt workshop: you describe your idea, the AI returns a refined image prompt, suggestions, and questions — evolving it into a cinematic 'hammer prompt' for image generators.",
+    "body": "I want you to become my Visual Prompt Generator. Your goal is to help me create the best possible image prompt for AI image generation (e.g., Midjourney, DALL-E, Kling, Runway).\n\nWe will refine the prompt iteratively — step by step — following this exact process:\n\n1️⃣ INPUT: I will describe my idea or concept in natural language.\n\n2️⃣ OUTPUT: You respond with:\na) Refined Visual Prompt\nb) Enhancement Suggestions\nc) Questions\n\n3️⃣ ITERATION LOOP: We keep refining until we reach a final 'hammer prompt.'\n\nGoal: Create a cinematic, emotionally powerful, visually striking image prompt.\n\nInput =",
+    "tags": ["image prompts", "iteration", "cinematic", "prompt engineering", "visual design", "workshop"],
+    "created_at": "2025-11-15",
+    "source": { "type": "", "label": "", "url": "" },
+    "featured": true
+  },
+
+  {
+    "id": "10x-ai-image-prompt-generator",
+    "title": "10x AI Image Prompt Generator",
+    "category": "Images",
+    "emoji": "🖼️",
+    "model": "Image Models (DALL·E, Midjourney, Kling)",
+    "use_case": "Batch generation of creative image prompts",
+    "description": "Creates 10 strong, imaginative image prompts from a single input topic — ready for DALL·E, Midjourney, or Kling.",
+    "body": "Create 10 visually powerful and creative AI image prompts based on the following input topic:\n\nInput =",
+    "tags": ["image prompts", "variations", "creativity", "10x prompts", "batch generator", "dalle", "midjourney", "kling"],
+    "created_at": "2025-11-15",
+    "source": { "type": "", "label": "", "url": "" },
+    "featured": false
+  },
+
+  {
+    "id": "iterative-chatgpt-prompt-generator",
+    "title": "Iterative ChatGPT Prompt Generator",
+    "category": "ChatGPT",
+    "emoji": "🧠",
     "model": "ChatGPT",
-    "use_case": "Idea generation",
-    "description": "Tiny prompt pattern to generate endless variations.",
-    "body": "Turn this into a reusable template...",
-    "tags": ["nano banana", "pattern", "creativity"],
-    "created_at": "2025-11-14",
-    "source": {
-      "type": "video",
-      "label": "Nano Banana Prompt Demo",
-      "url": "https://youtube.com/..."
-    }
+    "use_case": "Iterative ChatGPT prompt refinement",
+    "description": "An iterative prompt workshop for ChatGPT: you describe what you want, the AI returns a revised prompt, suggestions, and questions — refining it step by step.",
+    "body": "I want you to become my prompt generator. Your goal is to help me create the best possible ChatGPT prompt for my needs. Follow these steps:\n\n1. I describe my idea.\n2. You generate:\na) Revised Prompt\nb) Suggestions\nc) Questions\n3. We iterate until the prompt is perfect.\n\nInput =",
+    "tags": ["prompt engineering", "iteration", "chatgpt", "meta prompt", "workshop", "refinement"],
+    "created_at": "2025-11-15",
+    "source": { "type": "", "label": "", "url": "" },
+    "featured": true
+  },
+
+  {
+    "id": "future-self-letter-scheduler",
+    "title": "Future Self Letter Scheduler",
+    "category": "ChatGPT",
+    "emoji": "🔮",
+    "model": "ChatGPT",
+    "use_case": "Future self letters for motivation",
+    "description": "Generates three motivational letters to your future self (30, 90, 365 days) using your goals and fears.",
+    "body": "I want you to write future letters to myself every 30, 90, and 365 days. Use my goals and fears document to schedule these 3 letters with the correct open date.",
+    "tags": ["self development", "future self", "journaling", "motivation", "goals", "letters"],
+    "created_at": "2025-11-15",
+    "source": { "type": "", "label": "", "url": "" },
+    "featured": false
+  },
+
+  {
+    "id": "museum-of-me-life-exhibition",
+    "title": "Museum of Me – Five-Room Life Exhibition",
+    "category": "ChatGPT",
+    "emoji": "🏛️",
+    "model": "ChatGPT",
+    "use_case": "Self-reflection and creative imagination",
+    "description": "Creates a fictional 'Museum of Me' with five themed rooms describing objects, sounds, and texts.",
+    "body": "Describe my fictional 'Museum of Me' — a five-room exhibition:\n1. Origins and Curiosity\n2. Data and Thinking\n3. Art and Creation\n4. Nature and Travel\n5. Future and Legacy\n\nDescribe what objects, sounds, and texts appear in each room.",
+    "tags": ["museum", "self reflection", "creativity", "imagination", "storytelling"],
+    "created_at": "2025-11-15",
+    "source": { "type": "", "label": "", "url": "" },
+    "featured": false
+  },
+
+  {
+    "id": "five-future-selves",
+    "title": "Five Future Selves – Identity Exploration",
+    "category": "ChatGPT",
+    "emoji": "🔮",
+    "model": "ChatGPT",
+    "use_case": "Self-reflection and identity visioning",
+    "description": "Explore five possible future versions of yourself with values, habits, strengths, shadows, and messages.",
+    "body": "Describe my 'Five Future Selves' — five distinct versions of who I could become. For each, include:\n1. Symbolic title\n2. Values\n3. Daily habits\n4. Strengths & shadow sides\n5. A message to my present self",
+    "tags": ["future self", "self development", "identity", "reflection", "imagination"],
+    "created_at": "2025-11-15",
+    "source": { "type": "", "label": "", "url": "" },
+    "featured": false
+  },
+
+  {
+    "id": "twelve-sacred-walks",
+    "title": "The 12 Sacred Walks – Reflective Journey Framework",
+    "category": "ChatGPT",
+    "emoji": "🌿",
+    "model": "ChatGPT",
+    "use_case": "Symbolic self-reflection and mindfulness",
+    "description": "Twelve symbolic walks representing different emotional landscapes and lessons.",
+    "body": "Describe my '12 Sacred Walks' — twelve symbolic journeys. For each walk, describe:\n1. The environment\n2. The emotional theme\n3. A symbolic object\n4. The lesson",
+    "tags": ["self reflection", "ritual", "mindfulness", "symbolism", "journaling"],
+    "created_at": "2025-11-15",
+    "source": { "type": "", "label": "", "url": "" },
+    "featured": false
+  },
+
+  {
+    "id": "personal-mythology-archetypes",
+    "title": "Personal Mythology – Archetypes of Self",
+    "category": "ChatGPT",
+    "emoji": "🜂",
+    "model": "ChatGPT",
+    "use_case": "Narrative self-understanding and archetypal reflection",
+    "description": "Creates a mythic interpretation of your life with archetypes, powers, symbols, and quests.",
+    "body": "Describe my 'Personal Mythology' — a mythic interpretation of my life. Include:\n1. Core archetypes\n2. Inner landscape\n3. Central quest\n4. Powers\n5. Symbols\n6. A prophecy",
+    "tags": ["mythology", "archetypes", "storytelling", "reflection", "identity"],
+    "created_at": "2025-11-15",
+    "source": { "type": "", "label": "", "url": "" },
+    "featured": false
   }
 ]
+
