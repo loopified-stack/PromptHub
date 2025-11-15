@@ -13,7 +13,6 @@
     "source": { "type": "", "label": "", "url": "" },
     "featured": true
   },
-
   {
     "id": "iterative-visual-prompt-generator",
     "title": "Iterative Visual Prompt Generator",
@@ -28,7 +27,6 @@
     "source": { "type": "", "label": "", "url": "" },
     "featured": true
   },
-
   {
     "id": "10x-ai-image-prompt-generator",
     "title": "10x AI Image Prompt Generator",
@@ -43,7 +41,6 @@
     "source": { "type": "", "label": "", "url": "" },
     "featured": false
   },
-
   {
     "id": "iterative-chatgpt-prompt-generator",
     "title": "Iterative ChatGPT Prompt Generator",
@@ -58,7 +55,6 @@
     "source": { "type": "", "label": "", "url": "" },
     "featured": true
   },
-
   {
     "id": "future-self-letter-scheduler",
     "title": "Future Self Letter Scheduler",
@@ -73,7 +69,6 @@
     "source": { "type": "", "label": "", "url": "" },
     "featured": false
   },
-
   {
     "id": "museum-of-me-life-exhibition",
     "title": "Museum of Me – Five-Room Life Exhibition",
@@ -88,7 +83,6 @@
     "source": { "type": "", "label": "", "url": "" },
     "featured": false
   },
-
   {
     "id": "five-future-selves",
     "title": "Five Future Selves – Identity Exploration",
@@ -103,7 +97,6 @@
     "source": { "type": "", "label": "", "url": "" },
     "featured": false
   },
-
   {
     "id": "twelve-sacred-walks",
     "title": "The 12 Sacred Walks – Reflective Journey Framework",
@@ -118,7 +111,6 @@
     "source": { "type": "", "label": "", "url": "" },
     "featured": false
   },
-
   {
     "id": "personal-mythology-archetypes",
     "title": "Personal Mythology – Archetypes of Self",
@@ -134,49 +126,47 @@
     "featured": false
   },
   {
-  "id": "chat-summary-article-generator",
-  "title": "Chat Summary Article Generator",
-  "category": "ChatGPT",
-  "emoji": "📝",
-  "model": "ChatGPT",
-  "use_case": "Turn an entire chat conversation into a structured article with sources",
-  "description": "Converts a full ChatGPT conversation into a well-organized English article and appends a list of all referenced links.",
-  "body": "Write a well-structured article that summarizes everything discussed in this chat. The article should be clear, readable, and beautifully organized. At the end of the article, include a list of all external source links that you have mentioned in the chat.\n\nOutput only the final article, in English.",
-  "tags": [
-    "summarization",
-    "article writing",
-    "chat analysis",
-    "documentation",
-    "content creation"
-  ],
-  "created_at": "2025-11-15",
-  "source": { "type": "", "label": "", "url": "" },
-  "featured": false
-},
-{
-  "id": "chat-history-knowledge-extractor",
-  "title": "Chat History Knowledge Extractor",
-  "category": "ChatGPT",
-  "emoji": "🧠",
-  "model": "ChatGPT",
-  "use_case": "Extract reusable insights from any chat history",
-  "description": "Creates structured summaries of conversations, isolating reusable concepts, strategies, tools, and ideas for long-term knowledge storage.",
-  "body": "You analyze a provided chat history and extract all reusable, high-value information from it. Your output must focus strictly on concepts that offer long-term utility for knowledge bases.\n\nFollow these rules:\n- Ignore irrelevant or redundant conversation content.\n- Identify and summarize reusable elements such as strategies, frameworks, prompt patterns, tools, definitions, methodologies, or decision criteria.\n- Present the extracted knowledge in clear, structured English using short section headers or bullet points.\n- Maintain a neutral, concise tone.\n- Include a short, descriptive title at the top.\n\nYour output must be optimized for long-term archival and future reference.",
-  "tags": [
-    "knowledge extraction",
-    "summarization",
-    "archives",
-    "prompt engineering",
-    "organization"
-  ],
-  "created_at": "2025-11-15",
-  "source": {
-    "type": "",
-    "label": "",
-    "url": ""
+    "id": "chat-summary-article-generator",
+    "title": "Chat Summary Article Generator",
+    "category": "ChatGPT",
+    "emoji": "📝",
+    "model": "ChatGPT",
+    "use_case": "Turn an entire chat conversation into a structured article with sources",
+    "description": "Converts a full ChatGPT conversation into a well-organized English article and appends a list of all referenced links.",
+    "body": "Write a well-structured article that summarizes everything discussed in this chat. The article should be clear, readable, and beautifully organized. At the end of the article, include a list of all external source links that you have mentioned in the chat.\n\nOutput only the final article, in English.",
+    "tags": [
+      "summarization",
+      "article writing",
+      "chat analysis",
+      "documentation",
+      "content creation"
+    ],
+    "created_at": "2025-11-15",
+    "source": { "type": "", "label": "", "url": "" },
+    "featured": false
   },
-  "featured": false
-}
-
+  {
+    "id": "chat-history-knowledge-extractor",
+    "title": "Chat History Knowledge Extractor",
+    "category": "ChatGPT",
+    "emoji": "🧠",
+    "model": "ChatGPT",
+    "use_case": "Extract reusable insights from any chat history",
+    "description": "Creates structured summaries of conversations, isolating reusable concepts, strategies, tools, and ideas for long-term knowledge storage.",
+    "body": "You analyze a provided chat history and extract all reusable, high-value information from it. Your output must focus strictly on concepts that offer long-term utility for knowledge bases.\n\nFollow these rules:\n- Ignore irrelevant or redundant conversation content.\n- Identify and summarize reusable elements such as strategies, frameworks, prompt patterns, tools, definitions, methodologies, or decision criteria.\n- Present the extracted knowledge in clear, structured English using short section headers or bullet points.\n- Maintain a neutral, concise tone.\n- Include a short, descriptive title at the top.\n\nYour output must be optimized for long-term archival and future reference.",
+    "tags": [
+      "knowledge extraction",
+      "summarization",
+      "archives",
+      "prompt engineering",
+      "organization"
+    ],
+    "created_at": "2025-11-15",
+    "source": {
+      "type": "",
+      "label": "",
+      "url": ""
+    },
+    "featured": false
+  }
 ]
-
