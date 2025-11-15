@@ -1,39 +1,35 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Prompt Hub</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8" />
+  <title>Loopified Prompt Hub</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
   <header>
-    <h1>Prompt Hub</h1>
-    <p class="sub">Search, preview, and copy your prompts instantly.</p>
-    <div class="controls">
-      <input id="search" type="search" placeholder="Search title or text…" aria-label="Search" />
-      <button id="clear">Clear</button>
-    </div>
+    <div class="title">Loopified Prompt Hub</div>
+    <div class="subtitle">Copy-ready prompts for ChatGPT, image models, and video AI.</div>
   </header>
 
-  <main>
-    <div id="stats" class="muted"></div>
-    <div id="list" class="grid"></div>
-  </main>
+  <div class="toolbar">
+    <input id="search" class="search-input" placeholder="Search prompts...">
+    <select id="sort" class="select">
+      <option value="newest">Sort: Newest</option>
+      <option value="az">Sort: A → Z</option>
+      <option value="za">Sort: Z → A</option>
+    </select>
+  </div>
 
-  <template id="card-tpl">
-    <article class="card">
-      <div class="card-head">
-        <h2 class="title"></h2>
-        <div class="actions">
-          <button class="copy">Copy</button>
-          <button class="toggle">Expand</button>
-        </div>
-      </div>
-      <pre class="prompt"><code></code></pre>
-    </article>
-  </template>
+  <div class="categories" id="categories"></div>
+
+  <main class="grid" id="promptGrid"></main>
+
+  <footer>
+    Built by Marina – Loopified · <a href="https://github.com/">GitHub</a>
+  </footer>
 
   <script src="script.js"></script>
 </body>
 </html>
+
