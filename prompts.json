@@ -1,7 +1,4 @@
 [
-  // =========================
-  // IMAGE PROMPTS – REVERSE ENGINEERING
-  // =========================
 
   {
     "id": "image-to-dalle-prompt-rebuilder",
@@ -60,10 +57,6 @@
 }
 ,
 
-  // =========================
-  // IMAGE PROMPTS – ITERATION & CREATION
-  // =========================
-
   {
     "id": "iterative-visual-prompt-generator",
     "title": "Iterative Visual Prompt Generator",
@@ -119,9 +112,7 @@
   "featured": true
 }
 ,
-  // =========================
-  // VIDEO CREATION
-  // =========================
+
   {
   "id": "ai-video-director-long-form-blueprint",
   "title": "AI Video Director – Long-Form Blueprint Generator",
@@ -150,9 +141,7 @@
 }
 ,
 
-  // =========================
-  // CHATGPT – PROMPT ENGINEERING
-  // =========================
+
 
   {
     "id": "iterative-chatgpt-prompt-generator",
@@ -210,9 +199,7 @@
   "featured": true
 },
 
-  // =========================
-  // CHATGPT – KNOWLEDGE & UTILITIES
-  // =========================
+
 
   {
     "id": "chat-history-knowledge-extractor",
@@ -244,9 +231,7 @@
     "featured": false
   },
 
-  // =========================
-  // SELF-REFLECTION & IDENTITY
-  // =========================
+ 
 
   {
     "id": "future-self-letter-scheduler",
