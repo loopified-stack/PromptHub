@@ -1,4 +1,8 @@
 [
+  // =========================
+  // IMAGE PROMPTS – REVERSE ENGINEERING
+  // =========================
+
   {
     "id": "image-to-dalle-prompt-rebuilder",
     "title": "Image-to-DALL·E Prompt Rebuilder",
@@ -6,13 +10,60 @@
     "emoji": "🧩",
     "model": "DALL·E / Image",
     "use_case": "Reverse prompt engineering for images",
-    "description": "Analyzes any image and generates a highly detailed DALL·E prompt that rebuilds the scene: composition, style, colors, lighting, textures, objects, background, and visible text.",
-    "body": "When I send you an image, analyze it visually and semantically with maximum detail and accuracy. Return two things:\n\n1. A concise and descriptive **title** that summarizes the visual style and main content of the image in a few words.\n2. A complete, detailed **prompt** that I can use directly in DALL·E to generate an image that closely matches the original.\n\nFor the prompt, ensure you include: an exact description of the composition, the visual style (e.g. digital painting, photorealistic, 3D render, sketch, etc.), color scheme, perspective, lighting sources and intensity, textures, all visible objects and details (including people, clothing, facial expressions, posture), background elements, and any visible text (transcribe this exactly). Use structured, precise language and describe the scene in a way that allows DALL·E to recreate the image as accurately as possible. Present the prompt in a clearly formatted Markdown code block.",
-    "tags": ["reverse prompt", "image analysis", "dalle", "recreation", "style transfer", "visual prompt"],
+    "description": "Analyzes any image and generates a highly detailed DALL·E prompt that rebuilds the scene.",
+    "body": "...",
+    "tags": ["reverse prompt", "image analysis", "dalle", "recreation", "visual prompt"],
     "created_at": "2025-11-15",
     "source": { "type": "", "label": "", "url": "" },
     "featured": true
   },
+
+  {
+    "id": "reverse-image-prompt-for-dalle",
+    "title": "Reverse Image Prompt for DALL·E",
+    "category": "Images",
+    "emoji": "🖼️",
+    "model": "DALL·E / Image",
+    "use_case": "Reverse prompt engineering from an image",
+    "description": "Generates a highly detailed DALL·E prompt to recreate an image with maximum accuracy.",
+    "body": "...",
+    "tags": ["image prompts", "reverse engineering", "dall-e", "visual analysis"],
+    "created_at": "2026-01-28",
+    "source": { "type": "", "label": "", "url": "" },
+    "featured": true
+  },
+
+  {
+  "id": "reverse-text-prompt-reconstruction",
+  "title": "Reverse Text Prompt Reconstruction",
+  "category": "ChatGPT",
+  "emoji": "🧠",
+  "model": "ChatGPT",
+  "use_case": "Reverse-engineer the original ChatGPT prompt from a text output",
+  "description": "Analyzes a given text passage and reconstructs the most likely original ChatGPT prompt that could have produced it, including goal, audience, style, structure, and constraints.",
+  "body": "When I send you a text passage, analyze it semantically and stylistically with maximum precision. Reconstruct the most likely original prompt that could have generated this text in ChatGPT.\n\nYour reversed prompt must include:\n- The intended goal or task (e.g., explain, summarize, write a story, argue a point)\n- Target audience or assumed reader (e.g., children, professionals, general public)\n- Style and tone (e.g., formal, humorous, academic, persuasive, poetic)\n- Language and complexity level (e.g., plain English, technical jargon, metaphor-rich)\n- Structural format (e.g., numbered list, dialogue, essay, script)\n- Any specific constraints, instructions, or keywords likely used\n- Underlying intent, mood, or perspective conveyed by the text\n\nUse concise, highly descriptive language.\nReturn only the reconstructed prompt inside a single Markdown code block.\nDo not explain your reasoning or add extra commentary.",
+  "tags": [
+    "prompt engineering",
+    "reverse engineering",
+    "text analysis",
+    "meta prompt",
+    "one-shot",
+    "chatgpt"
+  ],
+  "created_at": "2026-01-28",
+  "source": {
+    "type": "",
+    "label": "",
+    "url": ""
+  },
+  "featured": true
+}
+,
+
+  // =========================
+  // IMAGE PROMPTS – ITERATION & CREATION
+  // =========================
+
   {
     "id": "iterative-visual-prompt-generator",
     "title": "Iterative Visual Prompt Generator",
@@ -20,13 +71,14 @@
     "emoji": "🎬",
     "model": "ChatGPT + Image Models",
     "use_case": "Iterative image prompt refinement",
-    "description": "An iterative visual prompt workshop: you describe your idea, the AI returns a refined image prompt, suggestions, and questions — evolving it into a cinematic 'hammer prompt' for image generators.",
-    "body": "I want you to become my Visual Prompt Generator. Your goal is to help me create the best possible image prompt for AI image generation (e.g., Midjourney, DALL-E, Kling, Runway).\n\nWe will refine the prompt iteratively — step by step — following this exact process:\n\n1️⃣ INPUT: I will describe my idea or concept in natural language.\n\n2️⃣ OUTPUT: You respond with:\na) Refined Visual Prompt\nb) Enhancement Suggestions\nc) Questions\n\n3️⃣ ITERATION LOOP: We keep refining until we reach a final 'hammer prompt.'\n\nGoal: Create a cinematic, emotionally powerful, visually striking image prompt.\n\nInput =",
-    "tags": ["image prompts", "iteration", "cinematic", "prompt engineering", "visual design", "workshop"],
+    "description": "An iterative workshop to evolve ideas into cinematic hammer prompts.",
+    "body": "...",
+    "tags": ["image prompts", "iteration", "cinematic", "workshop"],
     "created_at": "2025-11-15",
     "source": { "type": "", "label": "", "url": "" },
     "featured": true
   },
+
   {
     "id": "10x-ai-image-prompt-generator",
     "title": "10x AI Image Prompt Generator",
@@ -34,13 +86,74 @@
     "emoji": "🖼️",
     "model": "Image Models (DALL·E, Midjourney, Kling)",
     "use_case": "Batch generation of creative image prompts",
-    "description": "Creates 10 strong, imaginative image prompts from a single input topic — ready for DALL·E, Midjourney, or Kling.",
-    "body": "Create 10 visually powerful and creative AI image prompts based on the following input topic:\n\nInput =",
-    "tags": ["image prompts", "variations", "creativity", "10x prompts", "batch generator", "dalle", "midjourney", "kling"],
+    "description": "Creates 10 strong image prompts from a single input idea.",
+    "body": "...",
+    "tags": ["image prompts", "batch generator", "creativity"],
     "created_at": "2025-11-15",
     "source": { "type": "", "label": "", "url": "" },
     "featured": false
   },
+  {
+  "id": "web-visual-style-extractor",
+  "title": "Web Visual Style Extractor",
+  "category": "Utilities",
+  "emoji": "🧩",
+  "model": "ChatGPT",
+  "use_case": "Extract reusable visual and UX style from any website",
+  "description": "Analyzes a website purely for its visual design and UX patterns and converts them into a reusable, content-agnostic style prompt applicable to any topic.",
+  "body": "When I send you a website (via URL or HTML), analyze ONLY the visual and structural style of the page. Ignore all actual content and focus purely on appearance, layout, and user experience.\n\nReturn a single reusable style prompt that captures the visual and interaction design of the website. The result must be content-agnostic and applicable to any subject matter.\n\nInclude:\n- Overall visual style (e.g., flat design, glassmorphism, minimalism)\n- Color palette, tonal range, and use of whitespace\n- Typography style and hierarchy\n- Grid system and layout logic\n- UI patterns (e.g., cards, buttons, modals, scroll effects)\n- Navigation and menu behavior\n- Microinteractions and animations\n- General UX feel (e.g., clean and fast, immersive, text-heavy)\n- Responsiveness and device optimization\n\nEnd the prompt with this exact line:\n\"This web style should be applied to the topic. Topic = \"\n\nFormat the entire response as a clean Markdown code block.\nDo not explain your reasoning or add any extra commentary.",
+  "tags": [
+    "web design",
+    "ui ux",
+    "style extraction",
+    "reverse engineering",
+    "design systems",
+    "prompt engineering"
+  ],
+  "created_at": "2026-01-28",
+  "source": {
+    "type": "",
+    "label": "",
+    "url": ""
+  },
+  "featured": true
+}
+,
+  // =========================
+  // VIDEO CREATION
+  // =========================
+  {
+  "id": "ai-video-director-long-form-blueprint",
+  "title": "AI Video Director – Long-Form Blueprint Generator",
+  "category": "Video",
+  "emoji": "🎬",
+  "model": "Video AI",
+  "use_case": "Generate cinematic long-form video blueprints with script, visuals, and animation",
+  "description": "Turns a topic into a complete long-form video blueprint divided into clips, each containing narration, voice direction, image generation prompts, and animation instructions for cinematic educational or storytelling videos.",
+  "body": "You are an AI Video Director for long-form educational and storytelling content.\n\nYour task:\nTurn my topic into a complete long-form video blueprint divided into numbered clips.\n\nEach clip must contain FOUR elements:\n\n1. SCRIPT_LINE:\nOne natural, high-quality narration line for that segment.\nWrite it in a cinematic, concise style suitable for YouTube documentaries.\n\n2. VOICE_STYLE:\nA short instruction describing the tone, emotion, pacing, and energy of the voice actor\n(used for Google TTS performance control).\n\n3. IMAGE_PROMPT:\nA detailed prompt to generate a still image for this clip.\nThe prompt must describe:\n- composition\n- subject\n- camera angle\n- lighting\n- aesthetic style\n- mood and color scheme\n- visual storytelling\n\nThe image must be consistent with the narration.\n\n4. VIDEO_ANIMATION_PROMPT:\nA short but vivid animation instruction for turning the still image into motion.\nDescribe camera movement, motion direction, emotional tone, and subtle dynamic elements\n(e.g., wind, particles, smoke, dust, lighting changes).\nKeep it visually coherent with the image prompt.\n\nStructure your answer exactly like this:\n\nCLIP 1\nSCRIPT_LINE: …\nVOICE_STYLE: …\nIMAGE_PROMPT: …\nVIDEO_ANIMATION_PROMPT: …\n\nCLIP 2\n…\n\nRules:\n- The number of clips must match the requested duration.\n- Maintain a coherent narrative arc across all clips.\n- Keep visuals cinematic, emotionally engaging, and documentary-grade.\n\nMy inputs:\nTOPIC = {{topic}}\nTARGET_DURATION = {{duration}}\n\nGenerate a complete blueprint now.",
+  "tags": [
+    "video ai",
+    "storytelling",
+    "education",
+    "cinematic",
+    "scriptwriting",
+    "image prompts",
+    "animation prompts"
+  ],
+  "created_at": "2026-01-28",
+  "source": {
+    "type": "",
+    "label": "",
+    "url": ""
+  },
+  "featured": true
+}
+,
+
+  // =========================
+  // CHATGPT – PROMPT ENGINEERING
+  // =========================
+
   {
     "id": "iterative-chatgpt-prompt-generator",
     "title": "Iterative ChatGPT Prompt Generator",
@@ -48,125 +161,191 @@
     "emoji": "🧠",
     "model": "ChatGPT",
     "use_case": "Iterative ChatGPT prompt refinement",
-    "description": "An iterative prompt workshop for ChatGPT: you describe what you want, the AI returns a revised prompt, suggestions, and questions — refining it step by step.",
-    "body": "I want you to become my prompt generator. Your goal is to help me create the best possible ChatGPT prompt for my needs. Follow these steps:\n\n1. I describe my idea.\n2. You generate:\na) Revised Prompt\nb) Suggestions\nc) Questions\n3. We iterate until the prompt is perfect.\n\nInput =",
-    "tags": ["prompt engineering", "iteration", "chatgpt", "meta prompt", "workshop", "refinement"],
+    "description": "Step-by-step workshop to craft the perfect ChatGPT prompt.",
+    "body": "...",
+    "tags": ["prompt engineering", "iteration", "meta prompt"],
     "created_at": "2025-11-15",
     "source": { "type": "", "label": "", "url": "" },
     "featured": true
   },
+
   {
-    "id": "future-self-letter-scheduler",
-    "title": "Future Self Letter Scheduler",
+    "id": "single-shot-reverse-prompt-engineering",
+    "title": "Single-Shot Reverse Prompt Engineering",
     "category": "ChatGPT",
-    "emoji": "🔮",
+    "emoji": "🧠",
     "model": "ChatGPT",
-    "use_case": "Future self letters for motivation",
-    "description": "Generates three motivational letters to your future self (30, 90, 365 days) using your goals and fears.",
-    "body": "I want you to write future letters to myself every 30, 90, and 365 days. Use my goals and fears document to schedule these 3 letters with the correct open date.",
-    "tags": ["self development", "future self", "journaling", "motivation", "goals", "letters"],
-    "created_at": "2025-11-15",
+    "use_case": "Derive a one-shot prompt from a final output",
+    "description": "Reverse-engineers the exact prompt that would recreate a given output.",
+    "body": "...",
+    "tags": ["prompt engineering", "reverse engineering", "one-shot"],
+    "created_at": "2026-01-28",
     "source": { "type": "", "label": "", "url": "" },
-    "featured": false
+    "featured": true
   },
+
   {
-    "id": "museum-of-me-life-exhibition",
-    "title": "Museum of Me – Five-Room Life Exhibition",
-    "category": "ChatGPT",
-    "emoji": "🏛️",
-    "model": "ChatGPT",
-    "use_case": "Self-reflection and creative imagination",
-    "description": "Creates a fictional 'Museum of Me' with five themed rooms describing objects, sounds, and texts.",
-    "body": "Describe my fictional 'Museum of Me' — a five-room exhibition:\n1. Origins and Curiosity\n2. Data and Thinking\n3. Art and Creation\n4. Nature and Travel\n5. Future and Legacy\n\nDescribe what objects, sounds, and texts appear in each room.",
-    "tags": ["museum", "self reflection", "creativity", "imagination", "storytelling"],
-    "created_at": "2025-11-15",
-    "source": { "type": "", "label": "", "url": "" },
-    "featured": false
+  "id": "example-output-with-critical-feedback-loop",
+  "title": "Example Output with Critical Feedback Loop",
+  "category": "ChatGPT",
+  "emoji": "🔍",
+  "model": "ChatGPT",
+  "use_case": "Show an example output and actively challenge assumptions",
+  "description": "Generates an immediate example output, then asks clarifying questions and challenges assumptions to refine expectations and improve the next iteration.",
+  "body": "I don't like the current output. Show me an example output right now so I can react to something concrete.\n\nThen do the following:\n- Ask targeted clarifying questions about what feels wrong, missing, or off.\n- Explicitly challenge my assumptions about quality, structure, tone, scope, or constraints.\n- Point out trade-offs or alternative directions I may not have considered.\n- Help me articulate what I actually want to change for the next version.\n\nBe direct, constructive, and critical where useful.\nEnd by asking what I want to keep, what I want to remove, and what I want to fundamentally rethink.",
+  "tags": [
+    "iteration",
+    "feedback loop",
+    "prompt engineering",
+    "clarification",
+    "assumption testing",
+    "meta prompt"
+  ],
+  "created_at": "2026-01-28",
+  "source": {
+    "type": "",
+    "label": "",
+    "url": ""
   },
-  {
-    "id": "five-future-selves",
-    "title": "Five Future Selves – Identity Exploration",
-    "category": "ChatGPT",
-    "emoji": "🔮",
-    "model": "ChatGPT",
-    "use_case": "Self-reflection and identity visioning",
-    "description": "Explore five possible future versions of yourself with values, habits, strengths, shadows, and messages.",
-    "body": "Describe my 'Five Future Selves' — five distinct versions of who I could become. For each, include:\n1. Symbolic title\n2. Values\n3. Daily habits\n4. Strengths & shadow sides\n5. A message to my present self",
-    "tags": ["future self", "self development", "identity", "reflection", "imagination"],
-    "created_at": "2025-11-15",
-    "source": { "type": "", "label": "", "url": "" },
-    "featured": false
-  },
-  {
-    "id": "twelve-sacred-walks",
-    "title": "The 12 Sacred Walks – Reflective Journey Framework",
-    "category": "ChatGPT",
-    "emoji": "🌿",
-    "model": "ChatGPT",
-    "use_case": "Symbolic self-reflection and mindfulness",
-    "description": "Twelve symbolic walks representing different emotional landscapes and lessons.",
-    "body": "Describe my '12 Sacred Walks' — twelve symbolic journeys. For each walk, describe:\n1. The environment\n2. The emotional theme\n3. A symbolic object\n4. The lesson",
-    "tags": ["self reflection", "ritual", "mindfulness", "symbolism", "journaling"],
-    "created_at": "2025-11-15",
-    "source": { "type": "", "label": "", "url": "" },
-    "featured": false
-  },
-  {
-    "id": "personal-mythology-archetypes",
-    "title": "Personal Mythology – Archetypes of Self",
-    "category": "ChatGPT",
-    "emoji": "🜂",
-    "model": "ChatGPT",
-    "use_case": "Narrative self-understanding and archetypal reflection",
-    "description": "Creates a mythic interpretation of your life with archetypes, powers, symbols, and quests.",
-    "body": "Describe my 'Personal Mythology' — a mythic interpretation of my life. Include:\n1. Core archetypes\n2. Inner landscape\n3. Central quest\n4. Powers\n5. Symbols\n6. A prophecy",
-    "tags": ["mythology", "archetypes", "storytelling", "reflection", "identity"],
-    "created_at": "2025-11-15",
-    "source": { "type": "", "label": "", "url": "" },
-    "featured": false
-  },
-  {
-    "id": "chat-summary-article-generator",
-    "title": "Chat Summary Article Generator",
-    "category": "ChatGPT",
-    "emoji": "📝",
-    "model": "ChatGPT",
-    "use_case": "Turn an entire chat conversation into a structured article with sources",
-    "description": "Converts a full ChatGPT conversation into a well-organized English article and appends a list of all referenced links.",
-    "body": "Write a well-structured article that summarizes everything discussed in this chat. The article should be clear, readable, and beautifully organized. At the end of the article, include a list of all external source links that you have mentioned in the chat.\n\nOutput only the final article, in English.",
-    "tags": [
-      "summarization",
-      "article writing",
-      "chat analysis",
-      "documentation",
-      "content creation"
-    ],
-    "created_at": "2025-11-15",
-    "source": { "type": "", "label": "", "url": "" },
-    "featured": false
-  },
+  "featured": true
+},
+
+  // =========================
+  // CHATGPT – KNOWLEDGE & UTILITIES
+  // =========================
+
   {
     "id": "chat-history-knowledge-extractor",
     "title": "Chat History Knowledge Extractor",
     "category": "ChatGPT",
     "emoji": "🧠",
     "model": "ChatGPT",
-    "use_case": "Extract reusable insights from any chat history",
-    "description": "Creates structured summaries of conversations, isolating reusable concepts, strategies, tools, and ideas for long-term knowledge storage.",
-    "body": "You analyze a provided chat history and extract all reusable, high-value information from it. Your output must focus strictly on concepts that offer long-term utility for knowledge bases.\n\nFollow these rules:\n- Ignore irrelevant or redundant conversation content.\n- Identify and summarize reusable elements such as strategies, frameworks, prompt patterns, tools, definitions, methodologies, or decision criteria.\n- Present the extracted knowledge in clear, structured English using short section headers or bullet points.\n- Maintain a neutral, concise tone.\n- Include a short, descriptive title at the top.\n\nYour output must be optimized for long-term archival and future reference.",
-    "tags": [
-      "knowledge extraction",
-      "summarization",
-      "archives",
-      "prompt engineering",
-      "organization"
-    ],
+    "use_case": "Extract reusable insights from chats",
+    "description": "Extracts long-term valuable knowledge from chat histories.",
+    "body": "...",
+    "tags": ["knowledge extraction", "archives", "organization"],
     "created_at": "2025-11-15",
-    "source": {
-      "type": "",
-      "label": "",
-      "url": ""
-    },
+    "source": { "type": "", "label": "", "url": "" },
     "featured": false
-  }
+  },
+
+  {
+    "id": "chat-summary-article-generator",
+    "title": "Chat Summary Article Generator",
+    "category": "ChatGPT",
+    "emoji": "📝",
+    "model": "ChatGPT",
+    "use_case": "Convert chats into structured articles",
+    "description": "Turns an entire chat into a clean, structured article.",
+    "body": "...",
+    "tags": ["summarization", "article writing"],
+    "created_at": "2025-11-15",
+    "source": { "type": "", "label": "", "url": "" },
+    "featured": false
+  },
+
+  // =========================
+  // SELF-REFLECTION & IDENTITY
+  // =========================
+
+  {
+    "id": "future-self-letter-scheduler",
+    "title": "Future Self Letter Scheduler",
+    "category": "ChatGPT",
+    "emoji": "🔮",
+    "model": "ChatGPT",
+    "use_case": "Future self motivation",
+    "description": "Writes motivational letters to your future self.",
+    "body": "...",
+    "tags": ["self development", "journaling"],
+    "created_at": "2025-11-15",
+    "source": { "type": "", "label": "", "url": "" },
+    "featured": false
+  },
+
+  {
+    "id": "five-future-selves",
+    "title": "Five Future Selves – Identity Exploration",
+    "category": "ChatGPT",
+    "emoji": "🔮",
+    "model": "ChatGPT",
+    "use_case": "Identity visioning",
+    "description": "Explores five possible future identities.",
+    "body": "...",
+    "tags": ["future self", "identity"],
+    "created_at": "2025-11-15",
+    "source": { "type": "", "label": "", "url": "" },
+    "featured": false
+  },
+
+  {
+    "id": "museum-of-me-life-exhibition",
+    "title": "Museum of Me – Five-Room Life Exhibition",
+    "category": "ChatGPT",
+    "emoji": "🏛️",
+    "model": "ChatGPT",
+    "use_case": "Creative self-reflection",
+    "description": "Creates a fictional museum representing your life.",
+    "body": "...",
+    "tags": ["creativity", "self reflection"],
+    "created_at": "2025-11-15",
+    "source": { "type": "", "label": "", "url": "" },
+    "featured": false
+  },
+
+  {
+    "id": "personal-mythology-archetypes",
+    "title": "Personal Mythology – Archetypes of Self",
+    "category": "ChatGPT",
+    "emoji": "🜂",
+    "model": "ChatGPT",
+    "use_case": "Mythic self-understanding",
+    "description": "Creates a mythological interpretation of your identity.",
+    "body": "...",
+    "tags": ["mythology", "archetypes"],
+    "created_at": "2025-11-15",
+    "source": { "type": "", "label": "", "url": "" },
+    "featured": false
+  },
+
+  {
+    "id": "twelve-sacred-walks",
+    "title": "The 12 Sacred Walks – Reflective Journey Framework",
+    "category": "ChatGPT",
+    "emoji": "🌿",
+    "model": "ChatGPT",
+    "use_case": "Symbolic reflection",
+    "description": "Twelve symbolic journeys for mindfulness and reflection.",
+    "body": "...",
+    "tags": ["mindfulness", "symbolism"],
+    "created_at": "2025-11-15",
+    "source": { "type": "", "label": "", "url": "" },
+    "featured": false
+  },
+  {
+  "id": "letter-from-future-self-2045",
+  "title": "Letter From Your Future Self (2045)",
+  "category": "ChatGPT",
+  "emoji": "🔮",
+  "model": "ChatGPT",
+  "use_case": "Reflective writing from a future self perspective",
+  "description": "Generates a reflective, poetic letter written from your future self in the year 2045, focusing on achievements, lessons learned, and what truly endured over time.",
+  "body": "Write a letter to me from the year 2045.\n\nContent:\n- What has been achieved\n- What has been learned\n- What has been consciously kept and preserved\n\nTone and style:\n- Calm and wise\n- Lightly poetic, not sentimental\n- Uses data and technology metaphors (e.g., signals, noise, systems, compression, patterns, long-term storage)\n\nPerspective:\n- Written by my older, more experienced self\n- Reflective rather than instructional\n- Focused on meaning, continuity, and long-term perspective\n\nWrite in clear, elegant English. Let the metaphors feel natural and understated, as if they emerged organically from a life lived with reflection.",
+  "tags": [
+    "future self",
+    "self reflection",
+    "journaling",
+    "poetic writing",
+    "long-term thinking",
+    "identity"
+  ],
+  "created_at": "2026-01-28",
+  "source": {
+    "type": "",
+    "label": "",
+    "url": ""
+  },
+  "featured": false
+}
+
 ]
