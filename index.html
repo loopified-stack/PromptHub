@@ -2,34 +2,168 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Nova Lane Prompt Hub</title>
-  <link rel="stylesheet" href="style.css">
+  <style>
+    :root{
+      --text:#e5e7eb; --muted:#9ca3af;
+      --border:rgba(148,163,184,.25);
+      --card:rgba(15,23,42,.72);
+      --shadow:0 18px 45px rgba(15,23,42,.7);
+      --accent:#38bdf8;
+      --r:20px;
+    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{
+      font-family:system-ui,-apple-system,Segoe UI,sans-serif;
+      color:var(--text);
+      background:radial-gradient(circle at top,#0f172a 0,#020617 45%,#000 100%);
+      min-height:100vh;
+      padding:28px;
+      display:flex; justify-content:center;
+    }
+    .wrap{width:100%;max-width:1100px}
+    header{display:flex;flex-direction:column;gap:10px;margin-bottom:18px}
+    .kicker{color:var(--muted); letter-spacing:.12em; text-transform:uppercase; font-size:.78rem}
+    h1{font-size:2.8rem; line-height:1.05}
+    .sub{color:var(--muted); max-width:760px; line-height:1.5}
+    .cta{display:flex;gap:10px;flex-wrap:wrap;margin-top:8px}
+    a.btn{
+      display:inline-flex; align-items:center; gap:8px;
+      padding:10px 14px; border-radius:999px;
+      border:1px solid var(--border);
+      background:rgba(15,23,42,.85);
+      color:var(--text); text-decoration:none;
+      box-shadow:var(--shadow);
+    }
+    a.btn.primary{border-color:rgba(56,189,248,.6); background:rgba(56,189,248,.12)}
+    main{
+      margin-top:14px;
+      background:
+        radial-gradient(circle at top left, rgba(56,189,248,0.14), transparent 55%),
+        radial-gradient(circle at top right, rgba(147,51,234,0.18), transparent 55%),
+        linear-gradient(to bottom, rgba(15,23,42,.92), rgba(3,7,18,.96));
+      border:1px solid var(--border);
+      border-radius:26px;
+      box-shadow:var(--shadow);
+      padding:18px;
+    }
+    .section-title{font-size:1.05rem;color:#cbd5e1;margin:0 0 12px 0}
+    .grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+    @media(max-width:900px){.grid{grid-template-columns:repeat(2,1fr)}}
+    @media(max-width:620px){.grid{grid-template-columns:1fr}}
+    .card{
+      border:1px solid var(--border);
+      background:var(--card);
+      border-radius:var(--r);
+      padding:14px;
+      display:flex;flex-direction:column;gap:10px;
+      min-height:150px;
+    }
+    .top{display:flex;align-items:center;justify-content:space-between;gap:10px}
+    .title{font-weight:750}
+    .pill{
+      font-size:.78rem;color:var(--muted);
+      border:1px solid var(--border);
+      padding:3px 9px;border-radius:999px;
+      background:rgba(15,23,42,.55);
+      white-space:nowrap;
+    }
+    .desc{color:var(--muted); line-height:1.4; font-size:.92rem}
+    .card a{
+      margin-top:auto;
+      color:var(--text);
+      text-decoration:none;
+      border:1px solid rgba(56,189,248,.55);
+      background:rgba(56,189,248,.10);
+      padding:9px 10px;
+      border-radius:14px;
+      display:inline-flex;gap:8px;align-items:center;
+      width:fit-content;
+    }
+    footer{color:var(--muted); font-size:.85rem; margin-top:14px; text-align:center}
+  </style>
 </head>
 <body>
+  <div class="wrap">
+    <header>
+      <div class="kicker">Nova Lane • Prompt Systems</div>
+      <h1>Nova Lane Prompt Hub</h1>
+      <p class="sub">
+        Curated, copy-ready prompts for ChatGPT, image models, and video AI.
+        Discover via playlists. Deep-search in the library.
+      </p>
+      <div class="cta">
+        <a class="btn primary" href="./library/">🔎 Open Prompt Library</a>
+        <a class="btn" href="./library/">✨ Featured</a>
+        <a class="btn" href="./library/">🆕 Newest</a>
+      </div>
+    </header>
 
-  <header>
-    <div class="title">Loopified Prompt Hub</div>
-    <div class="subtitle">Copy-ready prompts for ChatGPT, image models, and video AI.</div>
-  </header>
+    <main>
+      <h2 class="section-title">Playlists</h2>
+      <div class="grid">
 
-  <div class="toolbar">
-    <input id="search" class="search-input" placeholder="Search prompts...">
-    <select id="sort" class="select">
-      <option value="newest">Sort: Newest</option>
-      <option value="az">Sort: A → Z</option>
-      <option value="za">Sort: Z → A</option>
-    </select>
+        <div class="card">
+          <div class="top">
+            <div class="title">🎨 Image Reverse Engineering</div>
+            <div class="pill">Images</div>
+          </div>
+          <div class="desc">Turn images into high-fidelity prompts (rebuild composition, lighting, materials, mood).</div>
+          <a href="./library/">Open playlist →</a>
+        </div>
+
+        <div class="card">
+          <div class="top">
+            <div class="title">🧠 Prompt Engineering Core</div>
+            <div class="pill">ChatGPT</div>
+          </div>
+          <div class="desc">Reusable meta-prompts for iteration, critique, structure, and clarity.</div>
+          <a href="./library/">Open playlist →</a>
+        </div>
+
+        <div class="card">
+          <div class="top">
+            <div class="title">🎬 Video Director Blueprints</div>
+            <div class="pill">Video</div>
+          </div>
+          <div class="desc">Clip-by-clip scripts + image prompts + animation instructions for cinematic videos.</div>
+          <a href="./library/">Open playlist →</a>
+        </div>
+
+        <div class="card">
+          <div class="top">
+            <div class="title">🧩 Utilities & Extractors</div>
+            <div class="pill">Tools</div>
+          </div>
+          <div class="desc">Style extractors, template makers, and conversion prompts that save time.</div>
+          <a href="./library/">Open playlist →</a>
+        </div>
+
+        <div class="card">
+          <div class="top">
+            <div class="title">✨ Featured Picks</div>
+            <div class="pill">Curated</div>
+          </div>
+          <div class="desc">Your best prompts—kept tight, updated first, always usable.</div>
+          <a href="./library/">Open playlist →</a>
+        </div>
+
+        <div class="card">
+          <div class="top">
+            <div class="title">🏔️ Signature Aesthetic</div>
+            <div class="pill">Nova Lane</div>
+          </div>
+          <div class="desc">Clean, modern, slightly cinematic systems-thinking vibes (math + mountains energy).</div>
+          <a href="./library/">Open playlist →</a>
+        </div>
+
+      </div>
+    </main>
+
+    <footer>Built by Marina — Nova Lane</footer>
   </div>
-
-  <div class="categories" id="categories"></div>
-
-  <main class="grid" id="promptGrid"></main>
-
-  <footer>
-    Built by Nova Lane · <a href="https://github.com/">GitHub</a>
-  </footer>
-
-  <script src="script.js"></script>
 </body>
 </html>
+
 
