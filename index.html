@@ -2,91 +2,208 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
   <title>Nova Lane Prompt Hub</title>
+  <meta name="description" content="A curated prompt intelligence library for ChatGPT, image models, video AI, education, and workflow systems." />
+
   <link rel="stylesheet" href="./brand.css">
 </head>
+
 <body>
-  <div class="wrap">
-    <header>
-      <div class="kicker">Nova Lane • Prompt Systems</div>
-      <h1>Nova Lane Prompt Hub</h1>
-      <p class="sub">
-        Curated, copy-ready prompts for ChatGPT, image models, and video AI.
-        Discover via playlists. Deep-search in the library.
-      </p>
-      <div class="cta">
-        <a class="btn primary" href="./library/">🔎 Open Prompt Library</a>
-        <a class="btn" href="./library/?featured=true">✨ Featured</a>
-        <a class="btn" href="./library/?sort=newest">🆕 Newest</a>
+  <div class="noise"></div>
+
+  <main class="page">
+
+    <nav class="nav">
+      <a class="brand" href="./">
+        <span class="brand-mark">NL</span>
+        <span>
+          <strong>Nova Lane</strong>
+          <small>Prompt Systems</small>
+        </span>
+      </a>
+
+      <div class="nav-links">
+        <a href="./library/">Library</a>
+        <a href="./library/?featured=true">Featured</a>
+        <a href="./library/?sort=newest">Newest</a>
+      </div>
+    </nav>
+
+    <section class="hero">
+      <div class="hero-copy">
+        <div class="kicker">PromptOS Library · AI Workflow Intelligence</div>
+
+        <h1>Copy-ready prompt systems for better AI outputs.</h1>
+
+        <p>
+          A curated hub for prompt engineering, visual prompting, video AI,
+          education, knowledge work, and reusable creative workflows.
+        </p>
+
+        <div class="hero-actions">
+          <a class="btn primary" href="./library/">
+            <span>Open Prompt Library</span>
+            <strong>→</strong>
+          </a>
+
+          <a class="btn" href="./library/?featured=true">Featured Prompts</a>
+          <a class="btn" href="./library/?sort=newest">Newest Systems</a>
+        </div>
+      </div>
+
+      <aside class="hero-panel">
+        <div class="panel-glow"></div>
+
+        <div class="system-card active">
+          <span>01</span>
+          <strong>Prompt Engineering</strong>
+          <p>Meta-prompts for clarity, structure, reverse engineering, and iteration.</p>
+        </div>
+
+        <div class="system-card">
+          <span>02</span>
+          <strong>Visual Prompting</strong>
+          <p>Image prompts, style extraction, cinematic visual systems, and AI art workflows.</p>
+        </div>
+
+        <div class="system-card">
+          <span>03</span>
+          <strong>Video Creation</strong>
+          <p>Storyboard blueprints, scene structures, narration, image prompts, and animation logic.</p>
+        </div>
+      </aside>
+    </section>
+
+    <section class="metrics">
+      <div>
+        <strong>20+</strong>
+        <span>Prompt Systems</span>
+      </div>
+      <div>
+        <strong>7</strong>
+        <span>Core Categories</span>
+      </div>
+      <div>
+        <strong>100%</strong>
+        <span>Copy-ready</span>
+      </div>
+    </section>
+
+    <section class="playlists">
+      <div class="section-head">
+        <div>
+          <span class="section-label">Playlists</span>
+          <h2>Explore by outcome</h2>
+        </div>
+
+        <a href="./library/" class="section-link">View full library →</a>
+      </div>
+
+      <div class="playlist-grid">
+
+        <article class="playlist-card">
+          <div class="icon">🧠</div>
+          <div class="playlist-content">
+            <div class="playlist-top">
+              <h3>Prompt Engineering Core</h3>
+              <span>System</span>
+            </div>
+            <p>Reusable meta-prompts for reverse engineering, iteration, critique, and structured outputs.</p>
+            <a href="./library/?category=Prompt%20Engineering">Open playlist →</a>
+          </div>
+        </article>
+
+        <article class="playlist-card">
+          <div class="icon">🎨</div>
+          <div class="playlist-content">
+            <div class="playlist-top">
+              <h3>Visual Prompting</h3>
+              <span>Images</span>
+            </div>
+            <p>Image prompt builders, visual style extractors, and high-fidelity image recreation workflows.</p>
+            <a href="./library/?category=Visual%20Prompting">Open playlist →</a>
+          </div>
+        </article>
+
+        <article class="playlist-card">
+          <div class="icon">🎬</div>
+          <div class="playlist-content">
+            <div class="playlist-top">
+              <h3>Video Creation</h3>
+              <span>Video AI</span>
+            </div>
+            <p>Long-form video blueprints with scenes, narration, visuals, animation, and sound direction.</p>
+            <a href="./library/?category=Video%20Creation">Open playlist →</a>
+          </div>
+        </article>
+
+        <article class="playlist-card">
+          <div class="icon">📚</div>
+          <div class="playlist-content">
+            <div class="playlist-top">
+              <h3>Education & Explainers</h3>
+              <span>Learning</span>
+            </div>
+            <p>Prompts that simplify complex topics, create visual explanations, and design learning content.</p>
+            <a href="./library/?category=Education%20%26%20Explainers">Open playlist →</a>
+          </div>
+        </article>
+
+        <article class="playlist-card">
+          <div class="icon">🗂️</div>
+          <div class="playlist-content">
+            <div class="playlist-top">
+              <h3>Knowledge Work</h3>
+              <span>Thinking</span>
+            </div>
+            <p>Turn chats, ideas, and research into structured articles, reusable insights, and knowledge assets.</p>
+            <a href="./library/?category=Knowledge%20Work">Open playlist →</a>
+          </div>
+        </article>
+
+        <article class="playlist-card featured">
+          <div class="icon">✨</div>
+          <div class="playlist-content">
+            <div class="playlist-top">
+              <h3>Featured Picks</h3>
+              <span>Curated</span>
+            </div>
+            <p>The strongest prompt systems in the library — selected for quality, usability, and creative value.</p>
+            <a href="./library/?featured=true">Open playlist →</a>
+          </div>
+        </article>
 
       </div>
-    </header>
+    </section>
 
-    <main>
-      <h2 class="section-title">Playlists</h2>
-      <div class="grid">
-
-        <div class="card">
-          <div class="top">
-            <div class="title">🎨 Image Reverse Engineering</div>
-            <div class="pill">Images</div>
-          </div>
-          <div class="desc">Turn images into high-fidelity prompts (rebuild composition, lighting, materials, mood).</div>
-          <a href="./library/?category=Images">Open playlist →</a>
-        </div>
-
-        <div class="card">
-          <div class="top">
-            <div class="title">🧠 Prompt Engineering Core</div>
-            <div class="pill">ChatGPT</div>
-          </div>
-          <div class="desc">Reusable meta-prompts for iteration, critique, structure, and clarity.</div>
-          <a href="./library/?category=ChatGPT">Open playlist →</a>
-        </div>
-
-        <div class="card">
-          <div class="top">
-            <div class="title">🎬 Video Director Blueprints</div>
-            <div class="pill">Video</div>
-          </div>
-          <div class="desc">Clip-by-clip scripts + image prompts + animation instructions for cinematic videos.</div>
-          <a href="./library/?category=Video">Open playlist →</a>
-        </div>
-
-        <div class="card">
-          <div class="top">
-            <div class="title">🧩 Utilities & Extractors</div>
-            <div class="pill">Tools</div>
-          </div>
-          <div class="desc">Style extractors, template makers, and conversion prompts that save time.</div>
-          <a href="./library/?category=Utilities">Open playlist →</a>
-        </div>
-
-        <div class="card">
-          <div class="top">
-            <div class="title">✨ Featured Picks</div>
-            <div class="pill">Curated</div>
-          </div>
-          <div class="desc">Your best prompts—kept tight, updated first, always usable.</div>
-          <a href="./library/?featured=true">Open playlist →</a>
-        </div>
-
-        <div class="card">
-          <div class="top">
-            <div class="title">🏔️ Signature Aesthetic</div>
-            <div class="pill">Nova Lane</div>
-          </div>
-          <div class="desc">Clean, modern, slightly cinematic systems-thinking vibes (math + mountains energy).</div>
-          <a href="./library/?tag=math">Open playlist →</a>
-        </div>
-
+    <section class="workflow">
+      <div class="workflow-copy">
+        <span class="section-label">Prompt Workflow</span>
+        <h2>From single prompts to reusable AI systems.</h2>
+        <p>
+          Nova Lane Prompt Hub is designed to evolve from a prompt library into
+          a workflow layer: prompts can become chains, templates, playbooks, and repeatable systems.
+        </p>
       </div>
-    </main>
 
-    <footer>Built by Marina — Nova Lane</footer>
-  </div>
+      <div class="workflow-chain">
+        <div>Idea</div>
+        <span>→</span>
+        <div>Prompt</div>
+        <span>→</span>
+        <div>Output</div>
+        <span>→</span>
+        <div>Workflow</div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <span>Built by Marina — Nova Lane</span>
+      <a href="./library/">Enter Prompt Library</a>
+    </footer>
+
+  </main>
 </body>
 </html>
-
-
