@@ -1058,3 +1058,56 @@ footer {
     font-size: 0.7rem;
   }
 }
+.featured-badge {
+  display: inline-flex;
+  margin-top: 8px;
+  padding: 5px 9px;
+  width: fit-content;
+  border-radius: 999px;
+  font-size: 0.68rem;
+  font-weight: 800;
+  color: #02040d;
+  background: linear-gradient(135deg, #11d5d5, #8b5cf6);
+}
+
+.info-block,
+.why-block {
+  padding: 12px;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.035);
+  border: 1px solid var(--line);
+}
+
+.info-block strong,
+.why-block strong {
+  display: block;
+  margin-bottom: 6px;
+  font-size: 0.72rem;
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.info-block span {
+  color: var(--text-soft);
+  font-size: 0.84rem;
+  line-height: 1.45;
+}
+
+.why-block ul {
+  margin: 0;
+  padding-left: 18px;
+  color: var(--text-soft);
+  font-size: 0.8rem;
+  line-height: 1.5;
+}
+
+.best-for {
+  margin-top: 0;
+}
+
+button.copied {
+  background: #39ffb6;
+  border-color: #39ffb6;
+  color: #02040d;
+}
