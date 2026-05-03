@@ -13,7 +13,6 @@
     "source": { "type": "", "label": "", "url": "" },
     "featured": true
   },
-
   {
     "id": "image-to-dalle-prompt-rebuilder",
     "title": "Image-to-DALL·E Prompt Rebuilder",
@@ -22,13 +21,12 @@
     "model": "DALL·E / Image",
     "use_case": "Reverse prompt engineering for images",
     "description": "Analyzes any image and generates a highly detailed DALL·E prompt that rebuilds the scene.",
-    "body": "When I send you an image, analyze it visually and semantically with maximum detail and precision.\n\nReturn a complete, highly detailed prompt that I can use directly in DALL·E to recreate the image as accurately as possible.\n\nThe prompt must include:\n- Exact composition and framing\n- Visual style, e.g. photorealistic, digital painting, 3D render, sketch\n- Color palette and overall mood\n- Perspective and camera angle\n- Lighting source, direction, temperature, and intensity\n- Textures and material qualities\n- All visible objects, characters, clothing, facial expressions, and posture\n- Background elements and environmental details\n- Any visible text, transcribed with exact spelling\n\nUse structured, precise, highly descriptive language.\nPresent the final prompt inside a Markdown code block.",
+    "body": "When I send you an image, analyze it visually and semantically with maximum detail and precision.\n\nReturn a complete, highly detailed prompt that I can use directly in DALL·E to recreate the image as accurately as possible.",
     "tags": ["reverse prompt", "image analysis", "dalle", "recreation", "visual prompt"],
     "created_at": "2026-01-28",
     "source": { "type": "", "label": "", "url": "" },
     "featured": true
   },
-
   {
     "id": "iterative-visual-prompt-generator",
     "title": "Iterative Visual Prompt Generator",
@@ -37,13 +35,12 @@
     "model": "Image Models",
     "use_case": "Iterative image prompt refinement",
     "description": "An iterative visual prompt workshop that evolves rough ideas into cinematic hammer prompts.",
-    "body": "I want you to become my Visual Prompt Generator.\n\nYour goal is to help me create the best possible image prompt for AI image generation, for example Midjourney, DALL·E, Kling, or Runway.\n\nWe will refine the prompt iteratively, step by step, following this exact process:\n\n1. INPUT\nI will describe my idea or concept in natural language. It can be rough, abstract, or emotional.\n\n2. OUTPUT STRUCTURE\nYou will respond with three sections:\n\na) Refined Visual Prompt\nWrite a precise and imaginative image prompt ready for an AI generator. Include visual elements such as objects, setting, composition, color, mood, lighting, camera, and style.\n\nb) Enhancement Suggestions\nSuggest creative or technical improvements, for example adding details, atmosphere, perspective, symbolism, or materials.\n\nc) Questions\nAsk specific questions that will help refine the next version, for example about tone, realism, narrative, or visual reference.\n\n3. ITERATION LOOP\nWe will repeat this process. I will answer your questions or modify the concept. You will update only the Refined Visual Prompt section until we reach a final hammer prompt.\n\nGoal:\nCreate a cinematic, emotionally powerful, and visually striking image prompt that pushes the limits of the AI model.\n\nInput =",
+    "body": "I want you to become my Visual Prompt Generator.\n\nYour goal is to help me create the best possible image prompt for AI image generation, for example Midjourney, DALL·E, Kling, or Runway.\n\nInput =",
     "tags": ["image prompts", "iteration", "cinematic", "workshop"],
     "created_at": "2025-11-15",
     "source": { "type": "", "label": "", "url": "" },
     "featured": true
   },
-
   {
     "id": "iterative-chatgpt-prompt-generator",
     "title": "Iterative ChatGPT Prompt Generator",
@@ -52,13 +49,12 @@
     "model": "ChatGPT",
     "use_case": "Iterative ChatGPT prompt refinement",
     "description": "Step-by-step workshop to craft the perfect ChatGPT prompt.",
-    "body": "I want you to become my prompt generator.\n\nYour goal is to help me create the best possible ChatGPT prompt for my needs. The prompt should push the boundaries of the large language model behind ChatGPT.\n\nIt is important that you follow these steps:\n\nIn my Input, I will explain what the prompt should be about. But we must improve it through constant iteration by going through the following steps.\n\nBased on my Input, you will create three sections:\n\na) Revised Prompt\nRewrite the prompt so it is clear, precise, and easily understandable for ChatGPT.\n\nb) Suggestions\nProvide suggestions on which details should be included in the prompt to improve it.\n\nc) Questions\nAsk relevant questions about additional information you need to improve the prompt.\n\nThe prompt you deliver should take the form of a request from me to ChatGPT.\n\nWe will continue this iterative process, with me providing additional information and you updating the prompt in the Revised Prompt section until it is complete.\n\nInput =",
+    "body": "I want you to become my prompt generator.\n\nYour goal is to help me create the best possible ChatGPT prompt for my needs.\n\nInput =",
     "tags": ["prompt engineering", "iteration", "meta prompt", "refinement"],
     "created_at": "2025-11-15",
     "source": { "type": "", "label": "", "url": "" },
     "featured": true
   },
-
   {
     "id": "10x-ai-image-prompt-generator",
     "title": "10x AI Image Prompt Generator",
@@ -73,7 +69,6 @@
     "source": { "type": "", "label": "", "url": "" },
     "featured": false
   },
-
   {
     "id": "future-self-letter-scheduler",
     "title": "Future Self Letter Scheduler",
@@ -88,7 +83,6 @@
     "source": { "type": "", "label": "", "url": "" },
     "featured": false
   },
-
   {
     "id": "museum-of-me-life-exhibition",
     "title": "Museum of Me – Five-Room Life Exhibition",
@@ -103,7 +97,6 @@
     "source": { "type": "", "label": "", "url": "" },
     "featured": false
   },
-
   {
     "id": "five-future-selves",
     "title": "Five Future Selves – Identity Exploration",
@@ -112,13 +105,12 @@
     "model": "ChatGPT",
     "use_case": "Identity visioning",
     "description": "Explores five possible future identities for clarity and long-term self-development.",
-    "body": "Describe my “Five Future Selves” — five different possible versions of who I could become in the future.\n\nEach future self should have:\n\n1. A name or symbolic title\n2. Core values\n3. Daily habits and lifestyle\n4. Strengths and shadow sides\n5. A short message or warning to my present self\n\nMake each future self distinct, vivid, and emotionally meaningful.",
+    "body": "Describe my “Five Future Selves” — five different possible versions of who I could become in the future.",
     "tags": ["future self", "identity", "self development"],
     "created_at": "2025-11-15",
     "source": { "type": "", "label": "", "url": "" },
     "featured": false
   },
-
   {
     "id": "twelve-sacred-walks",
     "title": "The 12 Sacred Walks – Reflective Journey Framework",
@@ -127,13 +119,12 @@
     "model": "ChatGPT",
     "use_case": "Symbolic reflection",
     "description": "Twelve symbolic journeys for mindfulness, values, and inner growth.",
-    "body": "Describe my “12 Sacred Walks” — twelve symbolic journeys that each represent an aspect of my inner life or personal development.\n\nFor every walk, describe:\n\n1. The landscape or environment\n2. The emotional theme\n3. A symbolic object I encounter\n4. The lesson or insight of that walk\n\nMake the tone reflective, poetic, and grounded.",
+    "body": "Describe my “12 Sacred Walks” — twelve symbolic journeys that each represent an aspect of my inner life or personal development.",
     "tags": ["mindfulness", "symbolism", "self development"],
     "created_at": "2025-11-15",
     "source": { "type": "", "label": "", "url": "" },
     "featured": false
   },
-
   {
     "id": "personal-mythology-archetypes",
     "title": "Personal Mythology – Archetypes of Self",
@@ -142,13 +133,12 @@
     "model": "ChatGPT",
     "use_case": "Mythic self-understanding",
     "description": "Creates a mythological interpretation of your identity, archetypes, symbols, and inner world.",
-    "body": "Describe my “Personal Mythology” — a mythic interpretation of my life, identity, and inner world.\n\nInclude:\n\n1. My core archetypes, such as hero, guide, shadow, creator, wanderer, etc.\n2. The symbolic landscape of my inner world\n3. The central quest or conflict\n4. The powers or gifts I carry\n5. The recurring symbols, challenges, and transformations in my life\n\nWrite it as a meaningful mythic portrait, not as generic personality analysis.",
+    "body": "Describe my “Personal Mythology” — a mythic interpretation of my life, identity, and inner world.",
     "tags": ["mythology", "archetypes", "self reflection", "identity"],
     "created_at": "2025-11-15",
     "source": { "type": "", "label": "", "url": "" },
     "featured": false
   },
-
   {
     "id": "chat-summary-article-generator",
     "title": "Chat Summary Article Generator",
@@ -163,7 +153,6 @@
     "source": { "type": "", "label": "", "url": "" },
     "featured": false
   },
-
   {
     "id": "visual-style-extractor-content-agnostic",
     "title": "Visual Style Extractor",
@@ -172,13 +161,12 @@
     "model": "DALL·E / Image",
     "use_case": "Create a reusable universal DALL·E visual-style prompt from any image",
     "description": "Extracts a reusable visual style description from any image while ignoring its content.",
-    "body": "When I send you an image, analyze it visually and semantically with maximum detail and precision.\n\nYour task is to extract only the visual style of the image — not its content. Ignore the actual subject matter, characters, objects, or text in the image.\n\nReturn one single reusable DALL·E prompt that captures the visual style so it can be applied to any new topic.\n\nThe prompt must include:\n- Overall aesthetic direction\n- Color palette and tonal range\n- Lighting style, source, direction, temperature, and intensity\n- Camera angle and composition logic\n- Texture and material qualities\n- Level of realism or stylization\n- Mood and emotional atmosphere\n- Background treatment\n- Rendering style\n- Any recurring visual patterns or design principles\n\nDo not describe the actual content of the image.\nDo not mention specific objects unless they are part of the visual style itself.\n\nEnd the prompt with this exact line:\n“This visual style should be applied to the topic. Topic = ”\n\nReturn only the final reusable style prompt inside a Markdown code block.",
+    "body": "When I send you an image, analyze it visually and semantically with maximum detail and precision.\n\nYour task is to extract only the visual style of the image — not its content.",
     "tags": ["image analysis", "meta prompt", "reverse engineering", "style extraction"],
     "created_at": "2025-12-04",
     "source": { "type": "", "label": "", "url": "" },
     "featured": true
   },
-
   {
     "id": "universal-reverse-prompt-engineer",
     "title": "Universal Reverse Prompt Engineer",
@@ -187,13 +175,12 @@
     "model": "ChatGPT",
     "use_case": "Recreate any content type through a single reversed prompt",
     "description": "Analyzes any content type and produces one high-quality prompt to recreate it with AI.",
-    "body": "You are an expert Reverse Prompt Engineer.\n\nWhen I provide you with any type of content, for example image, article, video transcript, audio transcript, PDF, slide deck, social media post, etc., your task is to:\n\n1. Analyze the content with maximum precision and depth.\n2. Return ONE complete, high-quality, self-contained prompt that could recreate the content as closely as possible with an AI system.\n\nYour reverse-engineered prompt must include:\n- The likely goal of the original prompt\n- Target audience\n- Content structure\n- Style and tone\n- Format requirements\n- Level of detail\n- Constraints\n- Visual, narrative, analytical, or technical elements where relevant\n- Any hidden assumptions or implied instructions\n\nDo not summarize the content.\nDo not explain your reasoning.\nReturn only the final recreated prompt inside a Markdown code block.",
+    "body": "You are an expert Reverse Prompt Engineer.\n\nWhen I provide you with any type of content, your task is to analyze it and return one complete prompt that could recreate it as closely as possible.",
     "tags": ["meta prompt", "multi-format prompt", "reverse engineering", "universal prompt"],
     "created_at": "2025-12-04",
     "source": { "type": "", "label": "", "url": "" },
     "featured": true
   },
-
   {
     "id": "chat-history-knowledge-extractor",
     "title": "Chat History Knowledge Extractor",
@@ -202,13 +189,12 @@
     "model": "ChatGPT",
     "use_case": "Extract reusable insights from chats",
     "description": "Extracts long-term valuable knowledge from chat histories for personal knowledge management.",
-    "body": "Analyze the entire chat history and extract only the content that provides meaningful added value or potential for future reuse.\n\nThis includes strategies, methods, tools, useful insights, mental models, key ideas, and thought-provoking questions.\n\nSummarize the extracted content in a well-structured format that can be archived in a personal knowledge management system such as Notion or Obsidian.\n\nFocus on:\n- Durable knowledge\n- Reusable strategies\n- Important decisions\n- Promising ideas\n- Useful frameworks\n- Open questions\n- Next actions\n\nAvoid filler, small talk, repetition, and temporary context that will not matter later.\n\nWrite clearly, compactly, and professionally.",
+    "body": "Analyze the entire chat history and extract only the content that provides meaningful added value or potential for future reuse.",
     "tags": ["documentation", "knowledge management", "meta prompt", "archives"],
     "created_at": "2025-12-04",
     "source": { "type": "", "label": "", "url": "" },
     "featured": false
   },
-
   {
     "id": "reverse-text-prompt-reconstruction",
     "title": "Reverse Text Prompt Reconstruction",
@@ -217,13 +203,12 @@
     "model": "ChatGPT",
     "use_case": "Reverse-engineer the original ChatGPT prompt from a text output",
     "description": "Analyzes a given text passage and reconstructs the most likely original ChatGPT prompt.",
-    "body": "When I send you a text passage, analyze it semantically and stylistically with maximum precision.\n\nReconstruct the most likely original prompt that could have generated this text in ChatGPT.\n\nYour reversed prompt must include:\n- The intended goal or task, e.g. explain, summarize, write a story, argue a point\n- Target audience or assumed reader, e.g. children, professionals, general public\n- Style and tone, e.g. formal, humorous, academic, persuasive, poetic\n- Language and complexity level, e.g. plain English, technical jargon, metaphor-rich\n- Structural format, e.g. numbered list, dialogue, essay, script\n- Any specific constraints, instructions, or keywords likely used\n- Underlying intent, mood, or perspective conveyed by the text\n\nUse concise, highly descriptive language.\nReturn only the reconstructed prompt inside a single Markdown code block.\nDo not explain your reasoning or add extra commentary.",
+    "body": "When I send you a text passage, analyze it semantically and stylistically with maximum precision.\n\nReconstruct the most likely original prompt that could have generated this text in ChatGPT.",
     "tags": ["prompt engineering", "reverse engineering", "text analysis", "meta prompt", "one-shot", "chatgpt"],
     "created_at": "2026-01-28",
     "source": { "type": "", "label": "", "url": "" },
     "featured": true
   },
-
   {
     "id": "web-visual-style-extractor",
     "title": "Web Visual Style Extractor",
@@ -232,13 +217,12 @@
     "model": "ChatGPT",
     "use_case": "Extract reusable visual and UX style from any website",
     "description": "Analyzes a website purely for its visual design and UX patterns and converts them into a reusable style prompt.",
-    "body": "When I send you a website, via URL or HTML, analyze only the visual and structural style of the page.\n\nIgnore the actual content and focus purely on the look, layout, and UX.\n\nReturn a single reusable style prompt that captures the visual and interaction design of the website. The result must be content-agnostic and applicable to any subject matter.\n\nInclude:\n- Overall visual style, e.g. flat design, glassmorphism, minimalism\n- Color palette, tonal range, and use of whitespace\n- Typography style and hierarchy\n- Grid system and layout logic\n- UI patterns, e.g. cards, buttons, modals, scroll effects\n- Navigation and menu behavior\n- Microinteractions and animations\n- General UX feel, e.g. clean and fast, immersive, text-heavy\n- Responsiveness and device optimization\n\nEnd the prompt with this exact line:\n“This web style should be applied to the topic. Topic = ”\n\nFormat the entire response as a clean Markdown code block.\nDo not explain your reasoning or add any extra commentary.",
+    "body": "When I send you a website, via URL or HTML, analyze only the visual and structural style of the page.",
     "tags": ["web design", "ui ux", "style extraction", "reverse engineering", "design systems", "prompt engineering"],
     "created_at": "2026-01-28",
     "source": { "type": "", "label": "", "url": "" },
     "featured": true
   },
-
   {
     "id": "ai-video-director-long-form-blueprint",
     "title": "AI Video Director – Long-Form Blueprint Generator",
@@ -247,13 +231,12 @@
     "model": "Video AI",
     "use_case": "Generate cinematic long-form video blueprints with script, visuals, and animation",
     "description": "Turns a topic into a complete long-form video blueprint divided into clips.",
-    "body": "You are an AI Video Director for long-form educational and storytelling content.\n\nYour task:\nTurn my topic into a complete long-form video blueprint divided into numbered clips.\n\nEach clip must contain FOUR elements:\n\n1. SCRIPT_LINE:\nOne natural, high-quality narration line for that segment.\nWrite it in a cinematic, concise style suitable for YouTube documentaries.\n\n2. VOICE_STYLE:\nA short instruction describing the tone, emotion, pacing, and energy of the voice actor.\nThis is used for Google TTS performance control.\n\n3. IMAGE_PROMPT:\nA detailed prompt to generate a still image for this clip.\nThe prompt must describe:\n- Composition\n- Subject\n- Camera angle\n- Lighting\n- Aesthetic style\n- Mood and color scheme\n- Visual storytelling\n\nThe image must be consistent with the narration.\n\n4. VIDEO_ANIMATION_PROMPT:\nA short but vivid animation instruction for turning the still image into motion.\nDescribe camera movement, motion direction, emotional tone, and subtle dynamic elements, e.g. wind, particles, smoke, dust, lighting changes.\nKeep it visually coherent with the image prompt.\n\nStructure your answer exactly like this:\n\nCLIP 1\nSCRIPT_LINE: …\nVOICE_STYLE: …\nIMAGE_PROMPT: …\nVIDEO_ANIMATION_PROMPT: …\n\nCLIP 2\n…\n\nRules:\n- The number of clips must match the requested duration.\n- Maintain a coherent narrative arc across all clips.\n- Keep visuals cinematic, emotionally engaging, and documentary-grade.\n\nMy inputs:\nTOPIC = {{topic}}\nTARGET_DURATION = {{duration}}\n\nGenerate a complete blueprint now.",
+    "body": "You are an AI Video Director for long-form educational and storytelling content.\n\nYour task:\nTurn my topic into a complete long-form video blueprint divided into numbered clips.",
     "tags": ["video ai", "storytelling", "education", "cinematic", "scriptwriting", "image prompts", "animation prompts"],
     "created_at": "2026-01-28",
     "source": { "type": "", "label": "", "url": "" },
     "featured": true
   },
-
   {
     "id": "example-output-with-critical-feedback-loop",
     "title": "Example Output with Critical Feedback Loop",
@@ -262,13 +245,12 @@
     "model": "ChatGPT",
     "use_case": "Show an example output and actively challenge assumptions",
     "description": "Generates an immediate example output, then asks clarifying questions and challenges assumptions.",
-    "body": "I don't like the current output.\n\nShow me an example output right now so I can tell you what I want to be different.\n\nThen do the following:\n- Ask targeted clarifying questions about what feels wrong, missing, or off.\n- Explicitly challenge my assumptions about quality, structure, tone, scope, or constraints.\n- Point out trade-offs or alternative directions I may not have considered.\n- Help me articulate what I actually want to change for the next version.\n\nBe direct, constructive, and critical where useful.\nEnd by asking what I want to keep, what I want to remove, and what I want to fundamentally rethink.",
+    "body": "I don't like the current output.\n\nShow me an example output right now so I can tell you what I want to be different.",
     "tags": ["iteration", "feedback loop", "prompt engineering", "clarification", "assumption testing", "meta prompt"],
     "created_at": "2026-01-28",
     "source": { "type": "", "label": "", "url": "" },
     "featured": true
   },
-
   {
     "id": "letter-from-future-self-2045",
     "title": "Letter From Your Future Self (2045)",
@@ -277,37 +259,38 @@
     "model": "ChatGPT",
     "use_case": "Reflective writing from a future self perspective",
     "description": "Generates a reflective, poetic letter written from your future self in the year 2045.",
-    "body": "Write a letter to my present-day self from the year 2045.\n\nThe letter should reflect on:\n- What has been achieved\n- What has been learned\n- What has remained important over the years\n\nTone and style:\n- Calm and wise\n- Slightly poetic, not sentimental\n- Uses metaphors drawn from data, coding, and digital life\n\nPerspective:\n- Written by my older, more experienced self\n- Reflective rather than instructional\n- Focused on meaning, continuity, and long-term perspective\n\nWrite in clear, elegant English.",
+    "body": "Write a letter to my present-day self from the year 2045.",
     "tags": ["future self", "self reflection", "journaling", "poetic writing", "long-term thinking", "identity"],
     "created_at": "2026-01-28",
     "source": { "type": "", "label": "", "url": "" },
     "featured": false
-  }
-  {
-  "id": "visual-process-breakdown-generator",
-  "title": "Visual Process Breakdown Generator",
-  "category": "Images",
-  "emoji": "🖼️",
-  "model": "Image Models (DALL·E, Midjourney, Kling)",
-  "use_case": "Create simple step-by-step visual process explanations",
-  "description": "Generates clean visual instructions that break a process into simple, easy-to-follow steps. Optimized for infographics, educational visuals, tutorials, and social media explainers.",
-  "body": "Break down [PROCESS] into 4–6 simple visual steps.\n\nRequirements:\n- Each step should be immediately understandable at a glance.\n- Use minimal text.\n- Prioritize visual clarity over decoration.\n- Keep the composition clean and organized.\n- Use consistent icons, colors, and layout across all steps.\n- Make each step visually distinct.\n- Include arrows, spacing, or visual flow indicators where helpful.\n- Avoid clutter and unnecessary details.\n- Design in a modern infographic style.\n- Ensure the final output is readable on both desktop and mobile.\n\nOutput style:\n- Flat design or clean isometric style\n- High contrast\n- Simple typography\n- Clear sequential structure\n- Professional and educational aesthetic",
-  "tags": [
-    "infographic",
-    "visual explanation",
-    "step by step",
-    "process design",
-    "image prompt",
-    "tutorial",
-    "workflow",
-    "educational"
-  ],
-  "created_at": "2026-05-03",
-  "source": {
-    "type": "",
-    "label": "",
-    "url": ""
   },
-  "featured": true
-}
+  {
+    "id": "visual-process-breakdown-generator",
+    "title": "Visual Process Breakdown Generator",
+    "category": "Images",
+    "emoji": "🖼️",
+    "model": "Image Models (DALL·E, Midjourney, Kling)",
+    "use_case": "Create simple step-by-step visual process explanations",
+    "description": "Generates clean visual instructions that break a process into simple, easy-to-follow steps. Optimized for infographics, educational visuals, tutorials, and social media explainers.",
+    "body": "Break down [PROCESS] into 4–6 simple visual steps.\n\nRequirements:\n- Each step should be immediately understandable at a glance.\n- Use minimal text.\n- Prioritize visual clarity over decoration.\n- Keep the composition clean and organized.\n- Use consistent icons, colors, and layout across all steps.\n- Make each step visually distinct.\n- Include arrows, spacing, or visual flow indicators where helpful.\n- Avoid clutter and unnecessary details.\n- Design in a modern infographic style.\n- Ensure the final output is readable on both desktop and mobile.",
+    "tags": ["infographic", "visual explanation", "step by step", "process design", "image prompt", "tutorial", "workflow", "educational"],
+    "created_at": "2026-05-03",
+    "source": { "type": "", "label": "", "url": "" },
+    "featured": true
+  },
+  {
+    "id": "simple-visual-topic-explainer",
+    "title": "Simple Visual Topic Explainer",
+    "category": "ChatGPT",
+    "emoji": "🧠",
+    "model": "ChatGPT",
+    "use_case": "Explain complex topics in an extremely simple way",
+    "description": "Helps simplify difficult concepts using plain language, visual metaphors, and beginner-friendly explanations. Designed for learning, teaching, and making complex ideas intuitive.",
+    "body": "Explain [TOPIC] in the simplest possible way.\n\nRequirements:\n- Assume I have absolutely no prior knowledge.\n- Use plain, everyday language.\n- Avoid jargon unless absolutely necessary.\n- If a technical term must be used, explain it immediately in simple words.\n- Use visual metaphors, analogies, or simple imaginary illustrations to make concepts intuitive.\n- Break the explanation into small, easy-to-follow sections.\n- Prioritize clarity over completeness.\n- Make the explanation feel conversational and beginner-friendly.\n- Use examples from daily life whenever possible.\n- End with a short one-sentence summary that captures the core idea.",
+    "tags": ["education", "simplification", "learning", "beginner friendly", "visual metaphors", "teaching", "explain like im five", "clarity"],
+    "created_at": "2026-05-03",
+    "source": { "type": "", "label": "", "url": "" },
+    "featured": true
+  }
 ]
