@@ -7,7 +7,8 @@ let prompts = [];
 let state = {
   category: "All",
   search: "",
-  sort: "newest"
+  sort: "newest",
+  featured: false
 };
 
 // ------------------------------
@@ -16,12 +17,14 @@ let state = {
 
 const categoriesEl = document.getElementById("categories");
 const gridEl = document.getElementById("promptGrid");
+
 const searchEl = document.getElementById("search");
 const sortEl = document.getElementById("sort");
 
 const statTotalEl = document.getElementById("statTotal");
 const statCategoriesEl = document.getElementById("statCategories");
 const statFeaturedEl = document.getElementById("statFeatured");
+
 const resultCountEl = document.getElementById("resultCount");
 const emptyStateEl = document.getElementById("emptyState");
 
@@ -47,12 +50,38 @@ function uniqueArray(array) {
 }
 
 // ------------------------------
+// URL PARAMS
+// ------------------------------
+
+function applyURLParams() {
+  const params = new URLSearchParams(window.location.search);
+
+  const category = params.get("category");
+  const featured = params.get("featured");
+  const sort = params.get("sort");
+  const tag = params.get("tag");
+
+  if (category) state.category = category;
+  if (featured === "true") state.featured = true;
+  if (sort) state.sort = sort;
+  if (tag) state.search = tag;
+
+  if (searchEl && tag) {
+    searchEl.value = tag;
+  }
+
+  if (sortEl && sort) {
+    sortEl.value = sort;
+  }
+}
+
+// ------------------------------
 // LOAD DATA
 // ------------------------------
 
 async function loadPrompts() {
   try {
-    const res = await fetch("prompts.json");
+    const res = await fetch("./prompts.json");
 
     if (!res.ok) {
       throw new Error("Could not load prompts.json");
@@ -63,15 +92,18 @@ async function loadPrompts() {
     renderStats();
     renderCategories();
     renderGrid();
+
   } catch (error) {
+
+    console.error(error);
+
     gridEl.innerHTML = `
       <div class="empty-state show">
         <div class="empty-icon">⚠️</div>
         <h3>Prompt library could not be loaded</h3>
-        <p>Please check whether prompts.json exists and contains valid JSON.</p>
+        <p>Please check your prompts.json file.</p>
       </div>
     `;
-    console.error(error);
   }
 }
 
@@ -93,16 +125,29 @@ function renderStats() {
 // ------------------------------
 
 function renderCategories() {
-  const cats = ["All", ...uniqueArray(prompts.map(p => p.category)).sort()];
+
+  const categories = [
+    "All",
+    ...uniqueArray(prompts.map(p => p.category)).sort()
+  ];
+
   categoriesEl.innerHTML = "";
 
-  cats.forEach(cat => {
+  categories.forEach(category => {
+
     const chip = document.createElement("button");
-    chip.className = "chip" + (state.category === cat ? " active" : "");
-    chip.textContent = cat === "All" ? "🔥 All" : cat;
+
+    chip.className =
+      "chip" + (state.category === category ? " active" : "");
+
+    chip.textContent =
+      category === "All"
+        ? "🔥 All Prompts"
+        : category;
 
     chip.addEventListener("click", () => {
-      state.category = cat;
+      state.category = category;
+
       renderCategories();
       renderGrid();
     });
@@ -112,48 +157,79 @@ function renderCategories() {
 }
 
 // ------------------------------
-// FILTER + SORT
+// SORTING
 // ------------------------------
 
 function sortList(list) {
+
   const sorted = [...list];
 
   if (state.sort === "az") {
-    return sorted.sort((a, b) => a.title.localeCompare(b.title));
+    return sorted.sort((a, b) =>
+      a.title.localeCompare(b.title)
+    );
   }
 
   if (state.sort === "za") {
-    return sorted.sort((a, b) => b.title.localeCompare(a.title));
+    return sorted.sort((a, b) =>
+      b.title.localeCompare(a.title)
+    );
   }
 
-  return sorted.sort((a, b) => (b.created_at || "").localeCompare(a.created_at || ""));
+  return sorted.sort((a, b) =>
+    (b.created_at || "").localeCompare(a.created_at || "")
+  );
 }
 
+// ------------------------------
+// FILTERING
+// ------------------------------
+
 function filterList() {
+
   let list = [...prompts];
 
+  // CATEGORY
+
   if (state.category !== "All") {
-    list = list.filter(p => p.category === state.category);
+    list = list.filter(
+      p => p.category === state.category
+    );
   }
 
+  // FEATURED
+
+  if (state.featured) {
+    list = list.filter(
+      p => p.featured === true
+    );
+  }
+
+  // SEARCH
+
   if (state.search.trim()) {
+
     const q = normalize(state.search);
 
     list = list.filter(p => {
+
       const searchable = [
+
         p.title,
         p.category,
         p.model,
         p.use_case,
         p.description,
         p.body,
-        p.difficulty,
         p.pattern,
+        p.difficulty,
+
         ...(p.tags || []),
         ...(p.output_type || []),
         ...(p.best_for || []),
         ...(p.why_it_works || []),
         ...(p.chainable_with || [])
+
       ]
         .map(normalize)
         .join(" ");
@@ -170,72 +246,134 @@ function filterList() {
 // ------------------------------
 
 function createCard(p) {
+
   const card = document.createElement("article");
   card.className = "card";
 
   const tags = (p.tags || [])
     .slice(0, 8)
-    .map(t => `<span class="tag">#${escapeHTML(t)}</span>`)
+    .map(tag =>
+      `<span class="tag">#${escapeHTML(tag)}</span>`
+    )
     .join("");
 
   const outputTypes = (p.output_type || [])
-    .map(t => `<span class="meta-pill">${escapeHTML(t)}</span>`)
+    .map(type =>
+      `<span class="meta-pill">${escapeHTML(type)}</span>`
+    )
     .join("");
 
   const bestFor = (p.best_for || [])
     .slice(0, 3)
-    .map(t => `<span class="tag">${escapeHTML(t)}</span>`)
+    .map(item =>
+      `<span class="tag">${escapeHTML(item)}</span>`
+    )
     .join("");
 
   const whyItWorks = (p.why_it_works || [])
     .slice(0, 3)
-    .map(item => `<li>${escapeHTML(item)}</li>`)
+    .map(item =>
+      `<li>${escapeHTML(item)}</li>`
+    )
     .join("");
 
   card.innerHTML = `
+
     <div class="card-header">
+
       <div>
-        <div class="card-title">${escapeHTML(p.title)}</div>
-        ${p.featured ? `<div class="featured-badge">Featured</div>` : ""}
+        <div class="card-title">
+          ${escapeHTML(p.title)}
+        </div>
+
+        ${
+          p.featured
+            ? `<div class="featured-badge">Featured</div>`
+            : ""
+        }
       </div>
-      <div class="card-category">${escapeHTML(p.emoji || "")} ${escapeHTML(p.category || "General")}</div>
+
+      <div class="card-category">
+        ${escapeHTML(p.emoji || "")}
+        ${escapeHTML(p.category || "General")}
+      </div>
+
     </div>
 
     <div class="meta-row">
-      ${p.model ? `<span class="meta-pill">Model: ${escapeHTML(p.model)}</span>` : ""}
-      ${p.difficulty ? `<span class="meta-pill">Level: ${escapeHTML(p.difficulty)}</span>` : ""}
-      ${p.pattern ? `<span class="meta-pill">Pattern: ${escapeHTML(p.pattern)}</span>` : ""}
+
+      ${
+        p.model
+          ? `<span class="meta-pill">Model: ${escapeHTML(p.model)}</span>`
+          : ""
+      }
+
+      ${
+        p.difficulty
+          ? `<span class="meta-pill">Level: ${escapeHTML(p.difficulty)}</span>`
+          : ""
+      }
+
+      ${
+        p.pattern
+          ? `<span class="meta-pill">Pattern: ${escapeHTML(p.pattern)}</span>`
+          : ""
+      }
+
     </div>
 
-    ${outputTypes ? `<div class="meta-row">${outputTypes}</div>` : ""}
+    ${
+      outputTypes
+        ? `<div class="meta-row">${outputTypes}</div>`
+        : ""
+    }
 
-    <div class="card-desc">${escapeHTML(p.description || "")}</div>
+    <div class="card-desc">
+      ${escapeHTML(p.description || "")}
+    </div>
 
-    ${p.use_case ? `
-      <div class="info-block">
-        <strong>Use case</strong>
-        <span>${escapeHTML(p.use_case)}</span>
-      </div>
-    ` : ""}
+    ${
+      p.use_case
+        ? `
+        <div class="info-block">
+          <strong>Use case</strong>
+          <span>${escapeHTML(p.use_case)}</span>
+        </div>
+      `
+        : ""
+    }
 
-    ${whyItWorks ? `
-      <div class="why-block">
-        <strong>Why it works</strong>
-        <ul>${whyItWorks}</ul>
-      </div>
-    ` : ""}
+    ${
+      whyItWorks
+        ? `
+        <div class="why-block">
+          <strong>Why it works</strong>
+          <ul>${whyItWorks}</ul>
+        </div>
+      `
+        : ""
+    }
 
-    ${bestFor ? `
-      <div class="tags best-for">
-        ${bestFor}
-      </div>
-    ` : ""}
+    ${
+      bestFor
+        ? `<div class="tags best-for">${bestFor}</div>`
+        : ""
+    }
 
-    <div class="tags">${tags}</div>
+    <div class="tags">
+      ${tags}
+    </div>
 
     ${
       p.source && p.source.label
-        ? `<div class="source">From: <a href="${escapeHTML(p.source.url)}" target="_blank" rel="noopener">${escapeHTML(p.source.label)}</a></div>`
+        ? `
+        <div class="source">
+          From:
+          <a href="${escapeHTML(p.source.url)}" target="_blank" rel="noopener">
+            ${escapeHTML(p.source.label)}
+          </a>
+        </div>
+      `
         : ""
     }
 
@@ -247,19 +385,35 @@ function createCard(p) {
     <pre class="prompt-body">${escapeHTML(p.body || "")}</pre>
   `;
 
+  // TOGGLE
+
   const toggleBtn = card.querySelector(".toggle");
   const copyBtn = card.querySelector(".copy");
   const promptBody = card.querySelector(".prompt-body");
 
   toggleBtn.addEventListener("click", () => {
-    const isOpen = promptBody.classList.toggle("open");
-    toggleBtn.textContent = isOpen ? "Hide prompt" : "Show prompt";
+
+    const isOpen =
+      promptBody.classList.toggle("open");
+
+    toggleBtn.textContent =
+      isOpen
+        ? "Hide prompt"
+        : "Show prompt";
   });
 
+  // COPY
+
   copyBtn.addEventListener("click", async () => {
+
     try {
-      await navigator.clipboard.writeText(p.body || "");
+
+      await navigator.clipboard.writeText(
+        p.body || ""
+      );
+
       const oldText = copyBtn.textContent;
+
       copyBtn.textContent = "Copied!";
       copyBtn.classList.add("copied");
 
@@ -267,8 +421,11 @@ function createCard(p) {
         copyBtn.textContent = oldText;
         copyBtn.classList.remove("copied");
       }, 1200);
+
     } catch {
+
       copyBtn.textContent = "Copy failed";
+
       setTimeout(() => {
         copyBtn.textContent = "Copy";
       }, 1200);
@@ -283,16 +440,23 @@ function createCard(p) {
 // ------------------------------
 
 function renderGrid() {
+
   const list = filterList();
 
   gridEl.innerHTML = "";
 
   if (resultCountEl) {
-    resultCountEl.textContent = `${list.length} prompt${list.length === 1 ? "" : "s"} found`;
+
+    resultCountEl.textContent =
+      `${list.length} prompt${list.length === 1 ? "" : "s"} found`;
   }
 
   if (emptyStateEl) {
-    emptyStateEl.classList.toggle("show", list.length === 0);
+
+    emptyStateEl.classList.toggle(
+      "show",
+      list.length === 0
+    );
   }
 
   list.forEach(prompt => {
@@ -305,12 +469,16 @@ function renderGrid() {
 // ------------------------------
 
 searchEl.addEventListener("input", () => {
+
   state.search = searchEl.value;
+
   renderGrid();
 });
 
 sortEl.addEventListener("change", () => {
+
   state.sort = sortEl.value;
+
   renderGrid();
 });
 
@@ -318,4 +486,5 @@ sortEl.addEventListener("change", () => {
 // START
 // ------------------------------
 
+applyURLParams();
 loadPrompts();
