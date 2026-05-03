@@ -4,90 +4,105 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <title>Nova Lane Prompt Hub</title>
-  <meta name="description" content="A premium copy-ready prompt library for ChatGPT, image models, video AI, education, workflows, and prompt engineering." />
+  <title>Nova Lane Prompt Library</title>
+  <meta name="description" content="A searchable prompt intelligence library for ChatGPT, image models, video AI, education, knowledge work, and AI workflows." />
 
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="./style.css">
 </head>
 
 <body>
-  <div class="page-shell">
+  <div class="app-shell">
 
-    <header class="hero">
+    <header class="app-header">
       <nav class="topbar">
-        <div class="brand">
-          <div class="brand-mark">NL</div>
-          <div>
-            <div class="brand-name">Nova Lane</div>
-            <div class="brand-label">Prompt Intelligence Library</div>
-          </div>
-        </div>
+        <a class="brand" href="../">
+          <span class="brand-mark">NL</span>
+          <span>
+            <strong>Nova Lane</strong>
+            <small>Prompt Intelligence Library</small>
+          </span>
+        </a>
 
         <div class="topbar-links">
-          <a href="#" class="topbar-link">Library</a>
-          <a href="#" class="topbar-link">Workflows</a>
-          <a href="#" class="topbar-link">About</a>
+          <a href="../">Home</a>
+          <a href="./">Library</a>
+          <a href="./?featured=true">Featured</a>
+          <a href="./?sort=newest">Newest</a>
         </div>
       </nav>
 
-      <section class="hero-content">
-        <div class="hero-kicker">PromptOS Database</div>
-        <h1>Build better AI outputs with copy-ready prompt systems.</h1>
-        <p>
-          A curated hub for prompt engineering, visual prompting, video AI,
-          education, knowledge work, and creative workflows.
-        </p>
+      <section class="library-hero">
+        <div>
+          <div class="hero-kicker">PromptOS Database</div>
+          <h1>Search, filter, and copy reusable prompt systems.</h1>
+          <p>
+            A structured library for prompt engineering, visual prompting, video AI,
+            education, design, knowledge work, and creative workflows.
+          </p>
+        </div>
 
-        <div class="hero-actions">
-          <a href="#promptGrid" class="hero-button primary">Explore Prompts</a>
-          <a href="#categories" class="hero-button secondary">Browse Categories</a>
-        </div>
-      </section>
-
-      <section class="stats-bar" aria-label="Prompt Hub statistics">
-        <div class="stat-card">
-          <span class="stat-number" id="statTotal">—</span>
-          <span class="stat-label">Prompts</span>
-        </div>
-        <div class="stat-card">
-          <span class="stat-number" id="statCategories">—</span>
-          <span class="stat-label">Categories</span>
-        </div>
-        <div class="stat-card">
-          <span class="stat-number" id="statFeatured">—</span>
-          <span class="stat-label">Featured</span>
+        <div class="hero-stats" aria-label="Prompt library statistics">
+          <div class="stat-card">
+            <strong id="statTotal">—</strong>
+            <span>Prompts</span>
+          </div>
+          <div class="stat-card">
+            <strong id="statCategories">—</strong>
+            <span>Categories</span>
+          </div>
+          <div class="stat-card">
+            <strong id="statFeatured">—</strong>
+            <span>Featured</span>
+          </div>
         </div>
       </section>
     </header>
 
-    <main>
-      <section class="control-panel">
-        <div class="control-copy">
-          <h2>Prompt Library</h2>
-          <p>Search, filter, expand, and copy high-quality prompts instantly.</p>
+    <main class="main-layout">
+
+      <aside class="sidebar">
+        <div class="sidebar-card">
+          <h2>Filters</h2>
+          <p>Find prompts by category, purpose, pattern, or keyword.</p>
+
+          <div class="sidebar-divider"></div>
+
+          <h3>Categories</h3>
+          <div class="categories" id="categories"></div>
         </div>
 
-        <div class="toolbar">
-          <div class="search-wrap">
-            <span class="search-icon">⌕</span>
-            <input id="search" class="search-input" placeholder="Search prompts, tags, use cases..." autocomplete="off">
-          </div>
-
-          <select id="sort" class="select">
-            <option value="newest">Newest first</option>
-            <option value="az">A → Z</option>
-            <option value="za">Z → A</option>
-          </select>
+        <div class="sidebar-card mini">
+          <h3>PromptHub Logic</h3>
+          <p>
+            Each prompt is designed as a reusable system, not just a one-time instruction.
+          </p>
         </div>
+      </aside>
 
-        <div class="categories" id="categories"></div>
-      </section>
-
-      <section class="grid-section">
-        <div class="section-header">
-          <div>
+      <section class="library-panel">
+        <div class="toolbar-panel">
+          <div class="toolbar-copy">
+            <span class="section-label">Prompt Library</span>
             <h2>All Prompt Systems</h2>
             <p id="resultCount">Loading prompt library...</p>
+          </div>
+
+          <div class="toolbar">
+            <div class="search-wrap">
+              <span class="search-icon">⌕</span>
+              <input
+                id="search"
+                class="search-input"
+                placeholder="Search prompts, tags, use cases, patterns..."
+                autocomplete="off"
+              >
+            </div>
+
+            <select id="sort" class="select" aria-label="Sort prompts">
+              <option value="newest">Newest first</option>
+              <option value="az">A → Z</option>
+              <option value="za">Z → A</option>
+            </select>
           </div>
         </div>
 
@@ -96,21 +111,19 @@
         <div class="empty-state" id="emptyState">
           <div class="empty-icon">🧠</div>
           <h3>No prompts found</h3>
-          <p>Try another search term or category.</p>
+          <p>Try another category, keyword, tag, model, or prompt pattern.</p>
         </div>
       </section>
+
     </main>
 
     <footer class="footer">
-      <div>
-        <strong>Nova Lane Prompt Hub</strong>
-        <span>Built as a reusable prompt intelligence system.</span>
-      </div>
-      <a href="https://github.com/" target="_blank" rel="noopener">GitHub</a>
+      <span>Built by Marina — Nova Lane</span>
+      <a href="../">Back to homepage</a>
     </footer>
 
   </div>
 
-  <script src="script.js"></script>
+  <script src="./script.js"></script>
 </body>
 </html>
