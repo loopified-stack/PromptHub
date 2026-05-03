@@ -1,4 +1,4 @@
-const prompts = [
+[
   {
     "id": "single-shot-reverse-prompt-engineering",
     "title": "Single-Shot Reverse Prompt Engineering",
@@ -283,4 +283,4 @@ const prompts = [
     "source": { "type": "", "label": "", "url": "" },
     "featured": false
   }
-];
+]
