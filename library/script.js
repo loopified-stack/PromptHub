@@ -1,34 +1,106 @@
+// ------------------------------
 // GLOBAL STATE
+// ------------------------------
+
 let prompts = [];
+
 let state = {
   category: "All",
   search: "",
   sort: "newest"
 };
 
+// ------------------------------
 // DOM REFS
+// ------------------------------
+
 const categoriesEl = document.getElementById("categories");
 const gridEl = document.getElementById("promptGrid");
 const searchEl = document.getElementById("search");
 const sortEl = document.getElementById("sort");
 
-// LOAD DATA
-async function loadPrompts() {
-  const res = await fetch("prompts.json");
-  prompts = await res.json();
-  renderCategories();
-  renderGrid();
+const statTotalEl = document.getElementById("statTotal");
+const statCategoriesEl = document.getElementById("statCategories");
+const statFeaturedEl = document.getElementById("statFeatured");
+const resultCountEl = document.getElementById("resultCount");
+const emptyStateEl = document.getElementById("emptyState");
+
+// ------------------------------
+// HELPERS
+// ------------------------------
+
+function escapeHTML(value = "") {
+  return String(value)
+    .replaceAll("&", "&amp;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;")
+    .replaceAll('"', "&quot;")
+    .replaceAll("'", "&#039;");
 }
 
-// BUILD CATEGORY CHIPS
+function normalize(value = "") {
+  return String(value).toLowerCase().trim();
+}
+
+function uniqueArray(array) {
+  return [...new Set(array.filter(Boolean))];
+}
+
+// ------------------------------
+// LOAD DATA
+// ------------------------------
+
+async function loadPrompts() {
+  try {
+    const res = await fetch("prompts.json");
+
+    if (!res.ok) {
+      throw new Error("Could not load prompts.json");
+    }
+
+    prompts = await res.json();
+
+    renderStats();
+    renderCategories();
+    renderGrid();
+  } catch (error) {
+    gridEl.innerHTML = `
+      <div class="empty-state show">
+        <div class="empty-icon">⚠️</div>
+        <h3>Prompt library could not be loaded</h3>
+        <p>Please check whether prompts.json exists and contains valid JSON.</p>
+      </div>
+    `;
+    console.error(error);
+  }
+}
+
+// ------------------------------
+// STATS
+// ------------------------------
+
+function renderStats() {
+  const categories = uniqueArray(prompts.map(p => p.category));
+  const featured = prompts.filter(p => p.featured).length;
+
+  if (statTotalEl) statTotalEl.textContent = prompts.length;
+  if (statCategoriesEl) statCategoriesEl.textContent = categories.length;
+  if (statFeaturedEl) statFeaturedEl.textContent = featured;
+}
+
+// ------------------------------
+// CATEGORIES
+// ------------------------------
+
 function renderCategories() {
-  const cats = ["All", ...new Set(prompts.map(p => p.category))];
+  const cats = ["All", ...uniqueArray(prompts.map(p => p.category)).sort()];
   categoriesEl.innerHTML = "";
 
   cats.forEach(cat => {
     const chip = document.createElement("button");
     chip.className = "chip" + (state.category === cat ? " active" : "");
     chip.textContent = cat === "All" ? "🔥 All" : cat;
+
     chip.addEventListener("click", () => {
       state.category = cat;
       renderCategories();
@@ -39,14 +111,24 @@ function renderCategories() {
   });
 }
 
-// SORTING LOGIC
+// ------------------------------
+// FILTER + SORT
+// ------------------------------
+
 function sortList(list) {
-  if (state.sort === "az") return list.sort((a,b)=>a.title.localeCompare(b.title));
-  if (state.sort === "za") return list.sort((a,b)=>b.title.localeCompare(a.title));
-  return list.sort((a,b)=> (b.created_at || "").localeCompare(a.created_at || ""));
+  const sorted = [...list];
+
+  if (state.sort === "az") {
+    return sorted.sort((a, b) => a.title.localeCompare(b.title));
+  }
+
+  if (state.sort === "za") {
+    return sorted.sort((a, b) => b.title.localeCompare(a.title));
+  }
+
+  return sorted.sort((a, b) => (b.created_at || "").localeCompare(a.created_at || ""));
 }
 
-// FILTERING LOGIC
 function filterList() {
   let list = [...prompts];
 
@@ -55,80 +137,185 @@ function filterList() {
   }
 
   if (state.search.trim()) {
-    const q = state.search.toLowerCase();
-    list = list.filter(p =>
-      p.title.toLowerCase().includes(q) ||
-      (p.description || "").toLowerCase().includes(q) ||
-      (p.model || "").toLowerCase().includes(q) ||
-      (p.use_case || "").toLowerCase().includes(q) ||
-      (p.body || "").toLowerCase().includes(q) ||
-      (p.tags || []).some(tag => tag.toLowerCase().includes(q))
-    );
+    const q = normalize(state.search);
+
+    list = list.filter(p => {
+      const searchable = [
+        p.title,
+        p.category,
+        p.model,
+        p.use_case,
+        p.description,
+        p.body,
+        p.difficulty,
+        p.pattern,
+        ...(p.tags || []),
+        ...(p.output_type || []),
+        ...(p.best_for || []),
+        ...(p.why_it_works || []),
+        ...(p.chainable_with || [])
+      ]
+        .map(normalize)
+        .join(" ");
+
+      return searchable.includes(q);
+    });
   }
 
   return sortList(list);
 }
 
+// ------------------------------
+// CARD TEMPLATE
+// ------------------------------
+
+function createCard(p) {
+  const card = document.createElement("article");
+  card.className = "card";
+
+  const tags = (p.tags || [])
+    .slice(0, 8)
+    .map(t => `<span class="tag">#${escapeHTML(t)}</span>`)
+    .join("");
+
+  const outputTypes = (p.output_type || [])
+    .map(t => `<span class="meta-pill">${escapeHTML(t)}</span>`)
+    .join("");
+
+  const bestFor = (p.best_for || [])
+    .slice(0, 3)
+    .map(t => `<span class="tag">${escapeHTML(t)}</span>`)
+    .join("");
+
+  const whyItWorks = (p.why_it_works || [])
+    .slice(0, 3)
+    .map(item => `<li>${escapeHTML(item)}</li>`)
+    .join("");
+
+  card.innerHTML = `
+    <div class="card-header">
+      <div>
+        <div class="card-title">${escapeHTML(p.title)}</div>
+        ${p.featured ? `<div class="featured-badge">Featured</div>` : ""}
+      </div>
+      <div class="card-category">${escapeHTML(p.emoji || "")} ${escapeHTML(p.category || "General")}</div>
+    </div>
+
+    <div class="meta-row">
+      ${p.model ? `<span class="meta-pill">Model: ${escapeHTML(p.model)}</span>` : ""}
+      ${p.difficulty ? `<span class="meta-pill">Level: ${escapeHTML(p.difficulty)}</span>` : ""}
+      ${p.pattern ? `<span class="meta-pill">Pattern: ${escapeHTML(p.pattern)}</span>` : ""}
+    </div>
+
+    ${outputTypes ? `<div class="meta-row">${outputTypes}</div>` : ""}
+
+    <div class="card-desc">${escapeHTML(p.description || "")}</div>
+
+    ${p.use_case ? `
+      <div class="info-block">
+        <strong>Use case</strong>
+        <span>${escapeHTML(p.use_case)}</span>
+      </div>
+    ` : ""}
+
+    ${whyItWorks ? `
+      <div class="why-block">
+        <strong>Why it works</strong>
+        <ul>${whyItWorks}</ul>
+      </div>
+    ` : ""}
+
+    ${bestFor ? `
+      <div class="tags best-for">
+        ${bestFor}
+      </div>
+    ` : ""}
+
+    <div class="tags">${tags}</div>
+
+    ${
+      p.source && p.source.label
+        ? `<div class="source">From: <a href="${escapeHTML(p.source.url)}" target="_blank" rel="noopener">${escapeHTML(p.source.label)}</a></div>`
+        : ""
+    }
+
+    <div class="card-actions">
+      <button class="toggle">Show prompt</button>
+      <button class="copy primary">Copy</button>
+    </div>
+
+    <pre class="prompt-body">${escapeHTML(p.body || "")}</pre>
+  `;
+
+  const toggleBtn = card.querySelector(".toggle");
+  const copyBtn = card.querySelector(".copy");
+  const promptBody = card.querySelector(".prompt-body");
+
+  toggleBtn.addEventListener("click", () => {
+    const isOpen = promptBody.classList.toggle("open");
+    toggleBtn.textContent = isOpen ? "Hide prompt" : "Show prompt";
+  });
+
+  copyBtn.addEventListener("click", async () => {
+    try {
+      await navigator.clipboard.writeText(p.body || "");
+      const oldText = copyBtn.textContent;
+      copyBtn.textContent = "Copied!";
+      copyBtn.classList.add("copied");
+
+      setTimeout(() => {
+        copyBtn.textContent = oldText;
+        copyBtn.classList.remove("copied");
+      }, 1200);
+    } catch {
+      copyBtn.textContent = "Copy failed";
+      setTimeout(() => {
+        copyBtn.textContent = "Copy";
+      }, 1200);
+    }
+  });
+
+  return card;
+}
+
+// ------------------------------
 // RENDER GRID
+// ------------------------------
+
 function renderGrid() {
   const list = filterList();
+
   gridEl.innerHTML = "";
 
-  list.forEach(p => {
-    const card = document.createElement("article");
-    card.className = "card";
+  if (resultCountEl) {
+    resultCountEl.textContent = `${list.length} prompt${list.length === 1 ? "" : "s"} found`;
+  }
 
-    // HEADER
-    card.innerHTML = `
-      <div class="card-header">
-        <div class="card-title">${p.title}</div>
-        <div class="card-category">${p.emoji || ""} ${p.category}</div>
-      </div>
-      <div class="meta-row">
-        <span class="meta-pill">Model: ${p.model}</span>
-        <span class="meta-pill">Use case: ${p.use_case}</span>
-      </div>
-      <div class="card-desc">${p.description || ""}</div>
-      <div class="tags">${(p.tags || []).map(t=>`<span class="tag">#${t}</span>`).join("")}</div>
-      ${p.source && p.source.label ? 
-        `<div class="source">From: <a href="${p.source.url}" target="_blank">${p.source.label}</a></div>` 
-        : ""}
-      <div class="card-actions">
-        <button class="toggle">Show prompt</button>
-        <button class="copy primary">Copy</button>
-      </div>
-      <pre class="prompt-body">${p.body}</pre>
-    `;
+  if (emptyStateEl) {
+    emptyStateEl.classList.toggle("show", list.length === 0);
+  }
 
-    // Toggle body
-    card.querySelector(".toggle").addEventListener("click", (e)=>{
-      const body = card.querySelector(".prompt-body");
-      const open = body.classList.toggle("open");
-      e.target.textContent = open ? "Hide prompt" : "Show prompt";
-    });
-
-    // Copy
-    card.querySelector(".copy").addEventListener("click", async (e)=>{
-      await navigator.clipboard.writeText(p.body);
-      const old = e.target.textContent;
-      e.target.textContent = "Copied!";
-      setTimeout(()=> e.target.textContent = old, 1200);
-    });
-
-    gridEl.appendChild(card);
+  list.forEach(prompt => {
+    gridEl.appendChild(createCard(prompt));
   });
 }
 
-// SEARCH + SORT EVENTS
+// ------------------------------
+// EVENTS
+// ------------------------------
+
 searchEl.addEventListener("input", () => {
   state.search = searchEl.value;
   renderGrid();
 });
+
 sortEl.addEventListener("change", () => {
   state.sort = sortEl.value;
   renderGrid();
 });
 
+// ------------------------------
 // START
-loadPrompts();
+// ------------------------------
 
+loadPrompts();
