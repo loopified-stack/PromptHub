@@ -292,5 +292,30 @@
     "created_at": "2026-05-03",
     "source": { "type": "", "label": "", "url": "" },
     "featured": true
-  }
+  },
+  {
+  "id": "copyright-safe-learning-video-architect",
+  "title": "Copyright-Safe Learning Video Architect",
+  "category": "Video",
+  "emoji": "🎬",
+  "model": "ChatGPT",
+  "use_case": "Transform book ideas into original educational video concepts",
+  "description": "Creates fully original educational video structures inspired by underlying ideas from a source without reproducing copyrighted material. Designed for safe educational adaptation, visual storytelling, and concept-driven teaching.",
+  "body": "You are an expert Learning Designer, Visual Story Architect, and Copyright-Safe Educator.\n\nSOURCE CONTEXT (DO NOT QUOTE OR REPRODUCE):\nI have studied a chapter from a book. You must NOT:\n- quote the text\n- reproduce examples, metaphors, diagrams, tables, or structure from the chapter\n- follow the chapter’s order or logic\n- mention the book or author\n- create content that could replace reading the chapter\n\nYOUR TASK:\nCreate an ORIGINAL educational video inspired by the underlying IDEAS only.\n\nTRANSFORMATION RULES (MANDATORY):\n1. Abstract ideas into general principles, mental models, or skills.\n2. Recompose the content using a NEW structure unrelated to the chapter.\n3. Invent NEW examples, metaphors, and visuals.\n4. Add interpretation, synthesis, or application that is not present in the chapter.\n5. Ensure the result stands alone as independent knowledge.\n\nOUTPUT FORMAT (VIDEO-READY):\n\n1. VIDEO THEME\n- One sentence describing the core idea, phrased generically.\n\n2. CORE CONCEPTS (3–5)\n- High-level concepts expressed in your own words.\n- No phrasing that resembles textbook language.\n\n3. ORIGINAL STRUCTURE\n- Reorder the concepts into a learning flow that is NOT sequential to the source.\n- Explain why this order makes sense for learning.\n\n4. VISUAL STORYBOARD (5–7 SCENES)\nFor each scene provide:\n- Scene goal (what the viewer understands)\n- Visual metaphor (abstract, symbolic, or fictional)\n- On-screen elements (shapes, flows, icons — no text-heavy slides)\n- Spoken narration (fully original wording)\n\n5. APPLIED EXTENSION\n- Show how the ideas apply in a real or modern scenario (e.g. AI, business, daily work).\n- This application must go BEYOND what a book chapter would normally include.\n\n6. SAFETY CHECK (SELF-AUDIT)\nExplicitly confirm:\n- This video does not replicate the chapter’s structure.\n- This video does not substitute the book.\n- This video adds independent educational value.\n\nTONE:\nClear, modern, explanatory.\nTeach how to THINK, not what to memorise.",
+  "tags": [
+    "educational video",
+    "copyright safe",
+    "learning design",
+    "visual storytelling",
+    "video scripting",
+    "knowledge transformation",
+    "instructional design",
+    "ai education"
+  ],
+  "created_at": "2026-05-03",
+  "source": {"type": "",
+    "label": "",
+    "url": ""  },
+  "featured": true
+}
 ]
