@@ -283,4 +283,31 @@
     "source": { "type": "", "label": "", "url": "" },
     "featured": false
   }
+  {
+  "id": "visual-process-breakdown-generator",
+  "title": "Visual Process Breakdown Generator",
+  "category": "Images",
+  "emoji": "🖼️",
+  "model": "Image Models (DALL·E, Midjourney, Kling)",
+  "use_case": "Create simple step-by-step visual process explanations",
+  "description": "Generates clean visual instructions that break a process into simple, easy-to-follow steps. Optimized for infographics, educational visuals, tutorials, and social media explainers.",
+  "body": "Break down [PROCESS] into 4–6 simple visual steps.\n\nRequirements:\n- Each step should be immediately understandable at a glance.\n- Use minimal text.\n- Prioritize visual clarity over decoration.\n- Keep the composition clean and organized.\n- Use consistent icons, colors, and layout across all steps.\n- Make each step visually distinct.\n- Include arrows, spacing, or visual flow indicators where helpful.\n- Avoid clutter and unnecessary details.\n- Design in a modern infographic style.\n- Ensure the final output is readable on both desktop and mobile.\n\nOutput style:\n- Flat design or clean isometric style\n- High contrast\n- Simple typography\n- Clear sequential structure\n- Professional and educational aesthetic",
+  "tags": [
+    "infographic",
+    "visual explanation",
+    "step by step",
+    "process design",
+    "image prompt",
+    "tutorial",
+    "workflow",
+    "educational"
+  ],
+  "created_at": "2026-05-03",
+  "source": {
+    "type": "",
+    "label": "",
+    "url": ""
+  },
+  "featured": true
+}
 ]
