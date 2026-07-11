@@ -853,5 +853,46 @@
     ],
     "quality_score": 98,
     "body_file": "prompts/chat-to-personal-problem-solving-pdf-guide.md"
+  },
+  {
+    "id": "adaptive-creative-director-question-mode",
+    "title": "Adaptive Creative Director Question Mode",
+    "category": "Prompt Engineering",
+    "emoji": "🎨",
+    "model": "ChatGPT",
+    "use_case": "Guide creative projects through one adaptive, high-value decision question at a time.",
+    "description": "Creates a premium interactive consultation flow that turns vague creative ideas into coherent briefs, strategies, and production-ready directions.",
+    "tags": [
+      "adaptive questioning",
+      "creative direction",
+      "decision making",
+      "design strategy",
+      "project briefing",
+      "guided consultation",
+      "user experience"
+    ],
+    "created_at": "2026-07-11",
+    "source": {
+      "type": "",
+      "label": "",
+      "url": ""
+    },
+    "featured": true,
+    "pattern": "Adaptive Question Flow",
+    "difficulty": "Advanced",
+    "output_type": [
+      "Prompt",
+      "Creative Brief",
+      "Design Direction"
+    ],
+    "best_for": [
+      "Creative Directors",
+      "Brand Strategists",
+      "UX Designers",
+      "Content Creators",
+      "Prompt Engineers"
+    ],
+    "quality_score": 96,
+    "body_file": "prompts/adaptive-creative-director-question-mode.md"
   }
 ]
