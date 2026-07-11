@@ -820,5 +820,38 @@
     ],
     "quality_score": 98,
     "body_file": "prompts/bridge-shot-generator-bambo-hedgi.md"
+  },
+  {
+    "id": "chat-to-personal-problem-solving-pdf-guide",
+    "title": "Chat-to-PDF Problem-Solving Guide",
+    "category": "Knowledge Systems",
+    "emoji": "🛠️📘",
+    "model": "ChatGPT",
+    "use_case": "Transform a solved ChatGPT conversation into a reusable German PDF problem-solving guide.",
+    "description": "Analyses the preceding conversation and creates a structured, privacy-safe, professional PDF guide documenting the problem, cause, successful solution, troubleshooting steps, warnings, and prevention.",
+    "tags": [
+      "troubleshooting",
+      "pdf guide",
+      "chat analysis",
+      "knowledge management",
+      "documentation",
+      "problem solving"
+    ],
+    "created_at": "2026-07-11",
+    "featured": true,
+    "pattern": "Conversation-to-Guide Transformation",
+    "difficulty": "Advanced",
+    "output_type": [
+      "PDF Guide",
+      "Troubleshooting Guide"
+    ],
+    "best_for": [
+      "ChatGPT Users",
+      "Knowledge Workers",
+      "Technical Support",
+      "Personal Knowledge Management"
+    ],
+    "quality_score": 98,
+    "body_file": "prompts/chat-to-personal-problem-solving-pdf-guide.md"
   }
 ]
