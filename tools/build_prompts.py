@@ -125,7 +125,7 @@ def build_prompts() -> None:
 
     for file_path in markdown_files:
         prompt = read_prompt_file(file_path)
-        prompt_id = str(prompt["id"])
+        prompt_id = str(prompt["id"]).strip()
 
         if prompt_id in markdown_prompts:
             raise ValueError(
@@ -153,12 +153,21 @@ def build_prompts() -> None:
         used_ids.add(prompt_id)
 
         if prompt_id in markdown_prompts:
-            result.append(markdown_prompts.pop(prompt_id))
+            result.append(
+                markdown_prompts.pop(prompt_id)
+            )
+
+        elif prompt.get("body_file"):
+            print(
+                f"Removing stale Markdown prompt: {prompt_id}"
+            )
+            continue
+
         else:
             result.append(prompt)
 
     for prompt in markdown_prompts.values():
-        prompt_id = str(prompt["id"])
+        prompt_id = str(prompt["id"]).strip()
 
         if prompt_id in used_ids:
             raise ValueError(
