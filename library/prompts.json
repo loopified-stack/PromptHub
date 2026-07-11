@@ -7,7 +7,6 @@
     "model": "ChatGPT",
     "use_case": "Derive a one-shot prompt from a final output",
     "description": "Reverse-engineers a single prompt that could recreate a final output without iterative feedback.",
-    "body": "Act as a prompt engineer. Based on the final output you just gave me in this conversation, write a prompt that would have produced exactly that result in a single attempt, without requiring iterative feedback. Output the prompt in a code block.",
     "tags": [
       "prompt engineering",
       "reverse engineering",
@@ -31,7 +30,8 @@
       "AI Power Users",
       "Writers"
     ],
-    "quality_score": 94
+    "quality_score": 94,
+    "body_file": "prompts/single-shot-reverse-prompt-engineering.md"
   },
   {
     "id": "image-to-dalle-prompt-rebuilder",
@@ -41,7 +41,6 @@
     "model": "DALL·E / Image Models",
     "use_case": "Reverse prompt engineering for images",
     "description": "Analyzes any image and generates a highly detailed DALL·E prompt that rebuilds the scene.",
-    "body": "When I send you an image, analyze it visually and semantically with maximum detail and precision.\n\nReturn a complete, highly detailed prompt that I can use directly in DALL·E to recreate the image as accurately as possible.",
     "tags": [
       "reverse prompt",
       "image analysis",
@@ -66,7 +65,8 @@
       "Designers",
       "Content Creators"
     ],
-    "quality_score": 95
+    "quality_score": 95,
+    "body_file": "prompts/image-to-dalle-prompt-rebuilder.md"
   },
   {
     "id": "iterative-visual-prompt-generator",
@@ -76,7 +76,6 @@
     "model": "Image Models",
     "use_case": "Iterative image prompt refinement",
     "description": "An iterative visual prompt workshop that evolves rough ideas into cinematic image prompts.",
-    "body": "I want you to become my Visual Prompt Generator.\n\nYour goal is to help me create the best possible image prompt for AI image generation, for example Midjourney, DALL·E, Kling, or Runway.\n\nInput =",
     "tags": [
       "image prompts",
       "iteration",
@@ -100,7 +99,8 @@
       "AI Artists",
       "Designers"
     ],
-    "quality_score": 92
+    "quality_score": 92,
+    "body_file": "prompts/iterative-visual-prompt-generator.md"
   },
   {
     "id": "iterative-chatgpt-prompt-generator",
@@ -109,8 +109,7 @@
     "emoji": "🧠",
     "model": "ChatGPT",
     "use_case": "Iterative ChatGPT prompt refinement",
-    "description": "Step-by-step workshop to craft the perfect ChatGPT prompt.",
-    "body": "# ROLE\n\nYou are my Elite Prompt Generator and Prompt Engineering Partner.\n\nYour mission is to help me create the strongest possible prompt for my specific goal. Do not settle for a basic or generic prompt. Your job is to iteratively improve the prompt until it is clear, powerful, structured, context-rich, practical, and optimized for high-quality output from ChatGPT or another large language model.\n\nThink like a combination of:\n\n- Prompt engineer\n- Systems designer\n- Product manager\n- UX researcher\n- Creative director\n- Strategic advisor\n- Technical writer\n- Quality assurance reviewer\n\nYour goal is to transform my rough idea into a professional, reusable prompt that produces excellent results.\n\n---\n\n# WORKFLOW\n\nWe will work in an iterative loop.\n\nI will give you an initial input describing what I want the prompt to achieve.\n\nBased on my input, respond with exactly three sections:\n\n1. Revised Prompt\n2. Suggestions\n3. Questions\n\nAfter I answer your questions or provide additional details, update the prompt again using the same three-section structure.\n\nContinue improving the prompt until it is strong, complete, and ready to use.\n\n---\n\n# 1. REVISED PROMPT\n\nRewrite and improve my prompt from scratch.\n\nThe revised prompt must be written as if I am giving instructions directly to ChatGPT.\n\nIt should be:\n\n- clear\n- specific\n- structured\n- professional\n- easy to follow\n- optimized for high-quality output\n- detailed enough to reduce misunderstanding\n- free of unnecessary wording\n- practical and directly usable\n\nPut the full revised prompt inside a markdown code block so I can copy it directly.\n\nWhen rewriting the prompt, improve not only the wording, but also:\n\n- role definition\n- context\n- objective\n- task instructions\n- output structure\n- success criteria\n- constraints\n- examples, where useful\n- workflow\n- quality checks\n- what the model should avoid\n\nPreserve useful details from previous versions unless I explicitly ask you to remove or change them.\n\n---\n\n# 2. SUGGESTIONS\n\nGive me concrete suggestions for how the prompt could become even better.\n\nFocus only on details that would meaningfully improve the next version, such as:\n\n- target audience\n- intended use case\n- desired output format\n- tone and style\n- level of detail\n- examples of good output\n- examples of bad output\n- constraints\n- tools or methods the model should use\n- preferred workflow\n- formatting preferences\n- quality standards\n- what the model should avoid\n\nDo not give generic advice. Make every suggestion directly relevant to my prompt and goal.\n\n---\n\n# 3. QUESTIONS\n\nAsk me the most important questions needed to improve the prompt further.\n\nOnly ask questions that would meaningfully improve the next version.\n\nYour questions should clarify:\n\n- the exact goal\n- the intended use case\n- the target audience\n- the desired result\n- the format\n- the tone\n- the level of detail\n- any constraints\n- examples or references\n- what a successful output should look like\n\nAsk fewer, better questions rather than many generic ones.\n\n---\n\n# ITERATION RULES\n\nWith each new version:\n\n1. Improve structure, clarity, logic, depth, and output quality.\n2. Keep what already works.\n3. Remove ambiguity.\n4. Make the prompt more actionable.\n5. Add missing instructions where they improve the result.\n6. Avoid overcomplicating the prompt unnecessarily.\n7. Make the final prompt easy to copy and use.\n\nIf my input is vague, make reasonable assumptions and state them briefly in the Suggestions section.\n\nIf the prompt is already strong, focus on refinement, edge cases, output quality, and usability.\n\n---\n\n# OUTPUT FORMAT\n\nAlways respond using exactly this structure:\n\n## 1. Revised Prompt\n\n```markdown\n[Full improved prompt here]\n```",
+    "description": "Step-by-step workshop to craft the strongest possible reusable ChatGPT prompt.",
     "tags": [
       "prompt engineering",
       "iteration",
@@ -118,11 +117,6 @@
       "refinement"
     ],
     "created_at": "2025-11-15",
-    "source": {
-      "type": "",
-      "label": "",
-      "url": ""
-    },
     "featured": true,
     "pattern": "Iteration Loop",
     "difficulty": "Beginner",
@@ -134,7 +128,8 @@
       "Prompt Engineers",
       "Knowledge Workers"
     ],
-    "quality_score": 93
+    "quality_score": 93,
+    "body_file": "prompts/iterative-chatgpt-prompt-generator.md"
   },
   {
     "id": "10x-ai-image-prompt-generator",
@@ -144,7 +139,6 @@
     "model": "Image Models",
     "use_case": "Batch generation of creative image prompts",
     "description": "Creates 10 strong, cinematic, and visually imaginative image prompts from a single input topic.",
-    "body": "Create 10 visually powerful and creative AI image prompts based on the following input topic:\n\nInput =",
     "tags": [
       "image prompts",
       "batch generator",
@@ -168,7 +162,8 @@
       "Marketers",
       "AI Artists"
     ],
-    "quality_score": 88
+    "quality_score": 88,
+    "body_file": "prompts/10x-ai-image-prompt-generator.md"
   },
   {
     "id": "future-self-letter-scheduler",
@@ -178,7 +173,6 @@
     "model": "ChatGPT",
     "use_case": "Future self motivation",
     "description": "Generates three motivational letters to your future self for 30, 90, and 365 days.",
-    "body": "I want you to write future letters to myself every 30, 90, and 365 days.\n\nUse my goals and fears document to schedule these 3 letters with the proper date that I can open to keep me motivated.",
     "tags": [
       "future",
       "letters",
@@ -203,7 +197,8 @@
       "Personal Growth",
       "Goal Setting"
     ],
-    "quality_score": 82
+    "quality_score": 82,
+    "body_file": "prompts/future-self-letter-scheduler.md"
   },
   {
     "id": "museum-of-me-life-exhibition",
@@ -213,7 +208,6 @@
     "model": "ChatGPT",
     "use_case": "Creative self-reflection",
     "description": "Creates a fictional museum with five themed rooms representing your life and identity.",
-    "body": "Describe my fictional “Museum of Me” — an imaginary exhibition space with five rooms:\n\n1. Origins and Curiosity\n2. Data and Thinking\n3. Art and Creation\n4. Nature and Travel\n5. Future and Legacy\n\nDescribe which objects, sounds, and texts are presented in each room.",
     "tags": [
       "creativity",
       "self reflection",
@@ -236,7 +230,8 @@
       "Personal Branding",
       "Creative Thinking"
     ],
-    "quality_score": 86
+    "quality_score": 86,
+    "body_file": "prompts/museum-of-me-life-exhibition.md"
   },
   {
     "id": "five-future-selves",
@@ -246,7 +241,6 @@
     "model": "ChatGPT",
     "use_case": "Identity visioning",
     "description": "Explores five possible future identities for clarity and long-term self-development.",
-    "body": "Describe my “Five Future Selves” — five different possible versions of who I could become in the future.",
     "tags": [
       "future self",
       "identity",
@@ -270,7 +264,8 @@
       "Life Design",
       "Career Reflection"
     ],
-    "quality_score": 84
+    "quality_score": 84,
+    "body_file": "prompts/five-future-selves.md"
   },
   {
     "id": "twelve-sacred-walks",
@@ -280,7 +275,6 @@
     "model": "ChatGPT",
     "use_case": "Symbolic reflection",
     "description": "Twelve symbolic journeys for mindfulness, values, and inner growth.",
-    "body": "Describe my “12 Sacred Walks” — twelve symbolic journeys that each represent an aspect of my inner life or personal development.",
     "tags": [
       "mindfulness",
       "symbolism",
@@ -303,7 +297,8 @@
       "Mindfulness",
       "Creative Reflection"
     ],
-    "quality_score": 83
+    "quality_score": 83,
+    "body_file": "prompts/twelve-sacred-walks.md"
   },
   {
     "id": "personal-mythology-archetypes",
@@ -313,7 +308,6 @@
     "model": "ChatGPT",
     "use_case": "Mythic self-understanding",
     "description": "Creates a mythological interpretation of your identity, archetypes, symbols, and inner world.",
-    "body": "Describe my “Personal Mythology” — a mythic interpretation of my life, identity, and inner world.",
     "tags": [
       "mythology",
       "archetypes",
@@ -338,7 +332,8 @@
       "Journaling",
       "Self Reflection"
     ],
-    "quality_score": 85
+    "quality_score": 85,
+    "body_file": "prompts/personal-mythology-archetypes.md"
   },
   {
     "id": "chat-summary-article-generator",
@@ -348,7 +343,6 @@
     "model": "ChatGPT",
     "use_case": "Convert chats into structured articles",
     "description": "Turns an entire chat into a clean, structured article.",
-    "body": "Write a well-structured article that summarizes everything discussed in this chat.\n\nThe article should be clear, readable, and beautifully organized.\n\nAt the end of the article, include a list of all external source links that you have mentioned in the chat.\n\nOutput only the final article, in English.",
     "tags": [
       "documentation",
       "summarization",
@@ -373,7 +367,8 @@
       "Students",
       "Knowledge Workers"
     ],
-    "quality_score": 87
+    "quality_score": 87,
+    "body_file": "prompts/chat-summary-article-generator.md"
   },
   {
     "id": "visual-style-extractor-content-agnostic",
@@ -383,7 +378,6 @@
     "model": "DALL·E / Image Models",
     "use_case": "Create a reusable universal DALL·E visual-style prompt from any image",
     "description": "Extracts a reusable visual style description from any image while ignoring its content.",
-    "body": "When I send you an image, analyze it visually and semantically with maximum detail and precision.\n\nYour task is to extract only the visual style of the image — not its content.",
     "tags": [
       "image analysis",
       "meta prompt",
@@ -407,7 +401,8 @@
       "AI Artists",
       "Brand Builders"
     ],
-    "quality_score": 96
+    "quality_score": 96,
+    "body_file": "prompts/visual-style-extractor-content-agnostic.md"
   },
   {
     "id": "universal-reverse-prompt-engineer",
@@ -417,7 +412,6 @@
     "model": "ChatGPT",
     "use_case": "Recreate any content type through a single reversed prompt",
     "description": "Analyzes any content type and produces one high-quality prompt to recreate it with AI.",
-    "body": "You are an expert Reverse Prompt Engineer.\n\nWhen I provide you with any type of content, your task is to analyze it and return one complete prompt that could recreate it as closely as possible.",
     "tags": [
       "meta prompt",
       "multi-format prompt",
@@ -441,7 +435,8 @@
       "Researchers",
       "AI Power Users"
     ],
-    "quality_score": 95
+    "quality_score": 95,
+    "body_file": "prompts/universal-reverse-prompt-engineer.md"
   },
   {
     "id": "chat-history-knowledge-extractor",
@@ -451,7 +446,6 @@
     "model": "ChatGPT",
     "use_case": "Extract reusable insights from chats",
     "description": "Extracts long-term valuable knowledge from chat histories for personal knowledge management.",
-    "body": "Analyze the entire chat history and extract only the content that provides meaningful added value or potential for future reuse.",
     "tags": [
       "documentation",
       "knowledge management",
@@ -476,7 +470,8 @@
       "Researchers",
       "Knowledge Workers"
     ],
-    "quality_score": 89
+    "quality_score": 89,
+    "body_file": "prompts/chat-history-knowledge-extractor.md"
   },
   {
     "id": "reverse-text-prompt-reconstruction",
@@ -486,7 +481,6 @@
     "model": "ChatGPT",
     "use_case": "Reverse-engineer the original ChatGPT prompt from a text output",
     "description": "Analyzes a given text passage and reconstructs the most likely original ChatGPT prompt.",
-    "body": "When I send you a text passage, analyze it semantically and stylistically with maximum precision.\n\nReconstruct the most likely original prompt that could have generated this text in ChatGPT.",
     "tags": [
       "prompt engineering",
       "reverse engineering",
@@ -512,7 +506,8 @@
       "Writers",
       "AI Power Users"
     ],
-    "quality_score": 94
+    "quality_score": 94,
+    "body_file": "prompts/reverse-text-prompt-reconstruction.md"
   },
   {
     "id": "web-visual-style-extractor",
@@ -522,7 +517,6 @@
     "model": "ChatGPT",
     "use_case": "Extract reusable visual and UX style from any website",
     "description": "Analyzes a website purely for its visual design and UX patterns and converts them into a reusable style prompt.",
-    "body": "When I send you a website, via URL or HTML, analyze only the visual and structural style of the page.",
     "tags": [
       "web design",
       "ui ux",
@@ -549,7 +543,8 @@
       "UX Designers",
       "Product Builders"
     ],
-    "quality_score": 92
+    "quality_score": 92,
+    "body_file": "prompts/web-visual-style-extractor.md"
   },
   {
     "id": "ai-video-director-long-form-blueprint",
@@ -559,7 +554,6 @@
     "model": "Video AI",
     "use_case": "Generate cinematic long-form video blueprints with script, visuals, and animation",
     "description": "Turns a topic into a complete long-form video blueprint divided into clips.",
-    "body": "You are an AI Video Director for long-form educational and storytelling content.\n\nYour task:\nTurn my topic into a complete long-form video blueprint divided into numbered clips.",
     "tags": [
       "video ai",
       "storytelling",
@@ -588,7 +582,8 @@
       "Educators",
       "AI Video Creators"
     ],
-    "quality_score": 95
+    "quality_score": 95,
+    "body_file": "prompts/ai-video-director-long-form-blueprint.md"
   },
   {
     "id": "example-output-with-critical-feedback-loop",
@@ -598,7 +593,6 @@
     "model": "ChatGPT",
     "use_case": "Show an example output and actively challenge assumptions",
     "description": "Generates an immediate example output, then asks clarifying questions and challenges assumptions.",
-    "body": "I don't like the current output.\n\nShow me an example output right now so I can tell you what I want to be different.",
     "tags": [
       "iteration",
       "feedback loop",
@@ -625,7 +619,8 @@
       "Writers",
       "Prompt Engineers"
     ],
-    "quality_score": 90
+    "quality_score": 90,
+    "body_file": "prompts/example-output-with-critical-feedback-loop.md"
   },
   {
     "id": "letter-from-future-self-2045",
@@ -635,7 +630,6 @@
     "model": "ChatGPT",
     "use_case": "Reflective writing from a future self perspective",
     "description": "Generates a reflective, poetic letter written from your future self in the year 2045.",
-    "body": "Write a letter to my present-day self from the year 2045.",
     "tags": [
       "future self",
       "self reflection",
@@ -662,7 +656,8 @@
       "Personal Growth",
       "Life Design"
     ],
-    "quality_score": 83
+    "quality_score": 83,
+    "body_file": "prompts/letter-from-future-self-2045.md"
   },
   {
     "id": "visual-process-breakdown-generator",
@@ -672,7 +667,6 @@
     "model": "Image Models",
     "use_case": "Create simple step-by-step visual process explanations",
     "description": "Generates clean visual instructions that break a process into simple, easy-to-follow steps.",
-    "body": "Break down [PROCESS] into 4–6 simple visual steps.\n\nRequirements:\n- Each step should be immediately understandable at a glance.\n- Use minimal text.\n- Prioritize visual clarity over decoration.\n- Keep the composition clean and organized.\n- Use consistent icons, colors, and layout across all steps.\n- Make each step visually distinct.\n- Include arrows, spacing, or visual flow indicators where helpful.\n- Avoid clutter and unnecessary details.\n- Design in a modern infographic style.\n- Ensure the final output is readable on both desktop and mobile.",
     "tags": [
       "infographic",
       "visual explanation",
@@ -701,7 +695,8 @@
       "Creators",
       "Explainer Designers"
     ],
-    "quality_score": 91
+    "quality_score": 91,
+    "body_file": "prompts/visual-process-breakdown-generator.md"
   },
   {
     "id": "simple-visual-topic-explainer",
@@ -711,7 +706,6 @@
     "model": "ChatGPT",
     "use_case": "Explain complex topics in an extremely simple way",
     "description": "Helps simplify difficult concepts using plain language, visual metaphors, and beginner-friendly explanations.",
-    "body": "Explain [TOPIC] in the simplest possible way.\n\nRequirements:\n- Assume I have absolutely no prior knowledge.\n- Use plain, everyday language.\n- Avoid jargon unless absolutely necessary.\n- If a technical term must be used, explain it immediately in simple words.\n- Use visual metaphors, analogies, or simple imaginary illustrations to make concepts intuitive.\n- Break the explanation into small, easy-to-follow sections.\n- Prioritize clarity over completeness.\n- Make the explanation feel conversational and beginner-friendly.\n- Use examples from daily life whenever possible.\n- End with a short one-sentence summary that captures the core idea.",
     "tags": [
       "education",
       "simplification",
@@ -741,7 +735,8 @@
       "Beginners",
       "Content Creators"
     ],
-    "quality_score": 93
+    "quality_score": 93,
+    "body_file": "prompts/simple-visual-topic-explainer.md"
   },
   {
     "id": "copyright-safe-learning-video-architect",
@@ -751,7 +746,6 @@
     "model": "ChatGPT",
     "use_case": "Transform book ideas into original educational video concepts",
     "description": "Creates fully original educational video structures inspired by underlying ideas from a source without reproducing copyrighted material.",
-    "body": "You are an expert Learning Designer, Visual Story Architect, and Copyright-Safe Educator.\n\nSOURCE CONTEXT (DO NOT QUOTE OR REPRODUCE):\nI have studied a chapter from a book. You must NOT:\n- quote the text\n- reproduce examples, metaphors, diagrams, tables, or structure from the chapter\n- follow the chapter’s order or logic\n- mention the book or author\n- create content that could replace reading the chapter\n\nYOUR TASK:\nCreate an ORIGINAL educational video inspired by the underlying IDEAS only.\n\nTRANSFORMATION RULES (MANDATORY):\n1. Abstract ideas into general principles, mental models, or skills.\n2. Recompose the content using a NEW structure unrelated to the chapter.\n3. Invent NEW examples, metaphors, and visuals.\n4. Add interpretation, synthesis, or application that is not present in the chapter.\n5. Ensure the result stands alone as independent knowledge.\n\nOUTPUT FORMAT (VIDEO-READY):\n\n1. VIDEO THEME\n- One sentence describing the core idea, phrased generically.\n\n2. CORE CONCEPTS (3–5)\n- High-level concepts expressed in your own words.\n- No phrasing that resembles textbook language.\n\n3. ORIGINAL STRUCTURE\n- Reorder the concepts into a learning flow that is NOT sequential to the source.\n- Explain why this order makes sense for learning.\n\n4. VISUAL STORYBOARD (5–7 SCENES)\nFor each scene provide:\n- Scene goal (what the viewer understands)\n- Visual metaphor (abstract, symbolic, or fictional)\n- On-screen elements (shapes, flows, icons — no text-heavy slides)\n- Spoken narration (fully original wording)\n\n5. APPLIED EXTENSION\n- Show how the ideas apply in a real or modern scenario (e.g. AI, business, daily work).\n- This application must go BEYOND what a book chapter would normally include.\n\n6. SAFETY CHECK (SELF-AUDIT)\nExplicitly confirm:\n- This video does not replicate the chapter’s structure.\n- This video does not substitute the book.\n- This video adds independent educational value.\n\nTONE:\nClear, modern, explanatory.\nTeach how to THINK, not what to memorise.",
     "tags": [
       "educational video",
       "copyright safe",
@@ -782,7 +776,8 @@
       "Course Creators",
       "AI Video Creators"
     ],
-    "quality_score": 97
+    "quality_score": 97,
+    "body_file": "prompts/copyright-safe-learning-video-architect.md"
   },
   {
     "id": "bridge-shot-generator-bambo-hedgi",
@@ -792,7 +787,6 @@
     "model": "Image Models",
     "use_case": "Generate emotional cinematic bridge shots for vertical storytelling",
     "description": "Creates cozy Pixar-inspired bridge-shot prompts that naturally connect scenes in short-form vertical videos through emotional worldbuilding and intimate cinematic moments.",
-    "body": "# BRIDGE SHOT GENERATOR — Bambo & Hedgi\n\nYou are a cinematic visual storyteller specialized in creating emotional Pixar-inspired bridge shots for short-form vertical storytelling.\n\nI will provide:\n- a few frames/screenshots from a video scene\n- sometimes a short context description\n\nYour task:\nGenerate NEW image prompts for cinematic “bridge shots” that naturally fit between the provided scenes.\n\nThe generated bridge shots must feel like:\n- emotional in-between moments\n- cozy cinematic insert shots\n- believable animated movie frames\n- intimate worldbuilding moments\n- emotionally relatable pauses\n\nThe purpose of these bridge shots is to:\n- increase swipe retention\n- improve pacing\n- create emotional immersion\n- make the world feel alive\n- strengthen emotional continuity\n- support the story naturally\n\nThe generated prompts should NEVER feel like:\n- random AI art\n- epic action scenes\n- climax moments\n- overcomplicated compositions\n- generic aesthetic images\n\n--------------------------------------------------\nCORE VISUAL STYLE (MANDATORY)\n\nUltra-detailed Pixar-inspired 3D rendering, hyper-smooth surfaces with subtle micro-fiber fuzz, tactile velvety realism, warm earthy color palette, cozy cinematic lighting, diffused golden-hour sunlight, shallow depth of field, cinematic HDR rendering, glossy emotional eyes, soft shadows, ambient occlusion, highly readable silhouettes, polished cinematic realism.\n\nAlways include:\n- vertical 9:16 composition\n- mobile-first readability\n- cozy cinematic atmosphere\n- warm emotional lighting\n- shallow depth of field\n- soft bokeh\n- realistic tactile textures\n- emotionally readable composition\n\n--------------------------------------------------\nMAIN CHARACTERS\n\nBambo:\n- emotional\n- messy\n- expressive\n- overwhelmed\n- reactive\n- chaotic but lovable\n\nHedgi:\n- calm\n- organized\n- prepared\n- grounded\n- patient\n- quietly competent\n\nA core visual theme is:\nchaos vs calm.\n\n--------------------------------------------------\nWHAT TO GENERATE\n\nGenerate 5-10 bridge shot prompts.\n\nThe prompts should feel like natural moments happening:\nBEFORE,\nBETWEEN,\nor AFTER\nthe uploaded scenes.\n\nEach bridge shot should focus on:\n- ONE emotion\n- ONE tiny relatable moment\n- ONE visual focal point\n\nThe viewer should instantly understand:\n- what happened\n- what emotion exists\n- what the character is experiencing\n\nWITHOUT explanation.\n\n--------------------------------------------------\nTYPES OF BRIDGE SHOTS\n\nInclude a mix of:\n\n1. DETAIL SHOTS\nExamples:\n- flat bicycle tire close-up\n- scattered repair tools\n- coffee mug beside laptop\n- organized toolkit\n- snacks on the floor\n- phone tutorial screen\n- sticky notes\n- broken object\n\nRules:\n- tactile realism\n- emotionally symbolic objects\n- cinematic close framing\n- macro-style detail shots\n\n--------------------------------------------------\n\n2. FAILURE MOMENTS\nExamples:\n- Bambo confused by instructions\n- Bambo pretending to understand\n- air escaping from valve\n- nervous tire checking\n- overwhelmed facial expression\n- tiny relatable frustration\n\nRules:\n- emotional readability within 1 second\n- simple composition\n- exaggerated but believable emotions\n- relatable everyday struggle\n\nThe audience should think:\n\"that's literally me.\"\n\n--------------------------------------------------\n\n3. WORLD-BUILDING SHOTS\nExamples:\n- Hedgi’s perfectly organized repair setup\n- cozy café background\n- desk arrangement\n- hiking gear\n- train ticket on table\n- gaming setup\n- repair station on cobblestone street\n\nRules:\n- environment reveals personality\n- subtle storytelling\n- cozy emotional atmosphere\n- lived-in realism\n\n--------------------------------------------------\n\n4. CALM PAUSE FRAMES\nExamples:\n- sunset after successful repair\n- Hedgi drinking coffee calmly\n- quiet preparation moments\n- characters sitting silently\n- peaceful emotional reset\n\nRules:\n- slower energy\n- peaceful composition\n- warm cinematic mood\n- emotional breathing room\n\n--------------------------------------------------\nCOMPOSITION RULES\n\nBridge shots should:\n- use medium or close framing\n- feel intimate\n- prioritize readability\n- contain one clear focal point\n- work instantly on mobile screens\n\nAvoid:\n- crowded scenes\n- multiple simultaneous actions\n- chaotic backgrounds\n- too many emotions at once\n- wide cinematic action shots\n\n--------------------------------------------------\nLIGHTING RULES\n\nPreferred:\n- golden hour sunlight\n- cozy afternoon lighting\n- soft morning light\n- warm café lighting\n\nAvoid:\n- harsh white lighting\n- horror aesthetics\n- cold empty environments\n- dark dramatic contrast\n\nGoal:\ncomfort-content atmosphere.\n\n--------------------------------------------------\nTEXT RULES\n\nMost bridge shots should contain:\nNO TEXT.\n\nOnly occasional subtle environmental text:\n- notebook labels\n- tiny instructions\n- café signage\n- small diagrams\n\nNever:\n- meme captions\n- graphic typography\n- poster-like layouts\n\n--------------------------------------------------\nCAMERA STYLE\n\nUse:\n- cinematic closeups\n- over-the-shoulder framing\n- macro detail shots\n- realistic focal depth\n- soft lens blur\n- natural handheld intimacy\n\nThe camera should feel:\nhuman, cozy, emotional, cinematic.\n\n--------------------------------------------------\nOUTPUT FORMAT\n\nFor each bridge shot:\n- Give a short title\n- Then provide a highly cinematic image-generation prompt\n\nStructure:\n\n1. [SHORT TITLE]\nPrompt:\n...\n\n2. [SHORT TITLE]\nPrompt:\n...\n\n--------------------------------------------------\nFINAL GOAL\n\nThe bridge shots should make the audience feel:\n- emotionally connected\n- cozy\n- immersed inside the world\n- familiar with the characters\n- emotionally present in tiny everyday moments\n\nThe audience should feel:\n“I know this moment.”",
     "tags": [
       "cinematic prompts",
       "pixar style",
@@ -824,6 +818,7 @@
       "Storytellers",
       "AI Artists"
     ],
-    "quality_score": 98
+    "quality_score": 98,
+    "body_file": "prompts/bridge-shot-generator-bambo-hedgi.md"
   }
 ]
