@@ -51,6 +51,15 @@ function uniqueArray(array) {
   return [...new Set(array.filter(Boolean))];
 }
 
+function stripFrontMatter(markdown = "") {
+  const content = String(markdown).replace(/^\uFEFF/, "");
+
+  const frontMatterPattern =
+    /^---\s*\r?\n[\s\S]*?\r?\n---\s*\r?\n?/;
+
+  return content.replace(frontMatterPattern, "");
+}
+
 // ------------------------------
 // PROMPT BODY LOADING
 // ------------------------------
@@ -79,7 +88,9 @@ async function loadPromptBody(prompt) {
         );
       }
 
-      body = await response.text();
+      body = stripFrontMatter(
+          await response.text()
+        );
 
     } catch (error) {
       console.error(error);
