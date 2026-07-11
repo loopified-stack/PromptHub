@@ -4,6 +4,8 @@
 
 let prompts = [];
 
+const promptBodyCache = new Map();
+
 let state = {
   category: "All",
   search: "",
@@ -50,6 +52,59 @@ function uniqueArray(array) {
 }
 
 // ------------------------------
+// PROMPT BODY LOADING
+// ------------------------------
+
+async function loadPromptBody(prompt) {
+  const cacheKey =
+    prompt.id ||
+    prompt.body_file ||
+    prompt.title;
+
+  if (promptBodyCache.has(cacheKey)) {
+    return promptBodyCache.get(cacheKey);
+  }
+
+  let body = "";
+
+  // New structure:
+  // Load the prompt from a separate Markdown file.
+  if (prompt.body_file) {
+    try {
+      const response = await fetch(`./${prompt.body_file}`);
+
+      if (!response.ok) {
+        throw new Error(
+          `Could not load prompt file: ${prompt.body_file}`
+        );
+      }
+
+      body = await response.text();
+
+    } catch (error) {
+      console.error(error);
+
+      // Safe fallback during migration:
+      // Use the old JSON body when available.
+      if (prompt.body) {
+        body = prompt.body;
+      } else {
+        throw error;
+      }
+    }
+
+  // Old structure:
+  // Read the prompt directly from prompts.json.
+  } else {
+    body = prompt.body || "";
+  }
+
+  promptBodyCache.set(cacheKey, body);
+
+  return body;
+}
+
+// ------------------------------
 // URL PARAMS
 // ------------------------------
 
@@ -81,20 +136,29 @@ function applyURLParams() {
 
 async function loadPrompts() {
   try {
-    const res = await fetch("./prompts.json");
+    const response = await fetch("./prompts.json");
 
-    if (!res.ok) {
+    if (!response.ok) {
       throw new Error("Could not load prompts.json");
     }
 
-    prompts = await res.json();
+    const data = await response.json();
+
+    if (!Array.isArray(data)) {
+      throw new Error(
+        "prompts.json must contain a JSON array."
+      );
+    }
+
+    prompts = data;
+
+    promptBodyCache.clear();
 
     renderStats();
     renderCategories();
     renderGrid();
 
   } catch (error) {
-
     console.error(error);
 
     gridEl.innerHTML = `
@@ -112,12 +176,25 @@ async function loadPrompts() {
 // ------------------------------
 
 function renderStats() {
-  const categories = uniqueArray(prompts.map(p => p.category));
-  const featured = prompts.filter(p => p.featured).length;
+  const categories = uniqueArray(
+    prompts.map(prompt => prompt.category)
+  );
 
-  if (statTotalEl) statTotalEl.textContent = prompts.length;
-  if (statCategoriesEl) statCategoriesEl.textContent = categories.length;
-  if (statFeaturedEl) statFeaturedEl.textContent = featured;
+  const featured = prompts.filter(
+    prompt => prompt.featured
+  ).length;
+
+  if (statTotalEl) {
+    statTotalEl.textContent = prompts.length;
+  }
+
+  if (statCategoriesEl) {
+    statCategoriesEl.textContent = categories.length;
+  }
+
+  if (statFeaturedEl) {
+    statFeaturedEl.textContent = featured;
+  }
 }
 
 // ------------------------------
@@ -125,20 +202,21 @@ function renderStats() {
 // ------------------------------
 
 function renderCategories() {
-
   const categories = [
     "All",
-    ...uniqueArray(prompts.map(p => p.category)).sort()
+    ...uniqueArray(
+      prompts.map(prompt => prompt.category)
+    ).sort()
   ];
 
   categoriesEl.innerHTML = "";
 
   categories.forEach(category => {
-
     const chip = document.createElement("button");
 
     chip.className =
-      "chip" + (state.category === category ? " active" : "");
+      "chip" +
+      (state.category === category ? " active" : "");
 
     chip.textContent =
       category === "All"
@@ -161,7 +239,6 @@ function renderCategories() {
 // ------------------------------
 
 function sortList(list) {
-
   const sorted = [...list];
 
   if (state.sort === "az") {
@@ -177,7 +254,9 @@ function sortList(list) {
   }
 
   return sorted.sort((a, b) =>
-    (b.created_at || "").localeCompare(a.created_at || "")
+    (b.created_at || "").localeCompare(
+      a.created_at || ""
+    )
   );
 }
 
@@ -186,14 +265,13 @@ function sortList(list) {
 // ------------------------------
 
 function filterList() {
-
   let list = [...prompts];
 
   // CATEGORY
 
   if (state.category !== "All") {
     list = list.filter(
-      p => p.category === state.category
+      prompt => prompt.category === state.category
     );
   }
 
@@ -201,40 +279,44 @@ function filterList() {
 
   if (state.featured) {
     list = list.filter(
-      p => p.featured === true
+      prompt => prompt.featured === true
     );
   }
 
   // SEARCH
 
   if (state.search.trim()) {
+    const query = normalize(state.search);
 
-    const q = normalize(state.search);
-
-    list = list.filter(p => {
-
+    list = list.filter(prompt => {
       const searchable = [
+        prompt.title,
+        prompt.category,
+        prompt.model,
+        prompt.use_case,
+        prompt.description,
 
-        p.title,
-        p.category,
-        p.model,
-        p.use_case,
-        p.description,
-        p.body,
-        p.pattern,
-        p.difficulty,
+        // Inline bodies remain searchable.
+        prompt.body,
 
-        ...(p.tags || []),
-        ...(p.output_type || []),
-        ...(p.best_for || []),
-        ...(p.why_it_works || []),
-        ...(p.chainable_with || [])
+        // External file names are searchable.
+        // The complete Markdown content is not loaded
+        // during normal search.
+        prompt.body_file,
 
+        prompt.pattern,
+        prompt.difficulty,
+
+        ...(prompt.tags || []),
+        ...(prompt.output_type || []),
+        ...(prompt.best_for || []),
+        ...(prompt.why_it_works || []),
+        ...(prompt.chainable_with || [])
       ]
         .map(normalize)
         .join(" ");
 
-      return searchable.includes(q);
+      return searchable.includes(query);
     });
   }
 
@@ -245,32 +327,32 @@ function filterList() {
 // CARD TEMPLATE
 // ------------------------------
 
-function createCard(p) {
-
+function createCard(prompt) {
   const card = document.createElement("article");
+
   card.className = "card";
 
-  const tags = (p.tags || [])
+  const tags = (prompt.tags || [])
     .slice(0, 8)
     .map(tag =>
       `<span class="tag">#${escapeHTML(tag)}</span>`
     )
     .join("");
 
-  const outputTypes = (p.output_type || [])
+  const outputTypes = (prompt.output_type || [])
     .map(type =>
       `<span class="meta-pill">${escapeHTML(type)}</span>`
     )
     .join("");
 
-  const bestFor = (p.best_for || [])
+  const bestFor = (prompt.best_for || [])
     .slice(0, 3)
     .map(item =>
       `<span class="tag">${escapeHTML(item)}</span>`
     )
     .join("");
 
-  const whyItWorks = (p.why_it_works || [])
+  const whyItWorks = (prompt.why_it_works || [])
     .slice(0, 3)
     .map(item =>
       `<li>${escapeHTML(item)}</li>`
@@ -278,48 +360,55 @@ function createCard(p) {
     .join("");
 
   card.innerHTML = `
-
     <div class="card-header">
-
       <div>
         <div class="card-title">
-          ${escapeHTML(p.title)}
+          ${escapeHTML(prompt.title)}
         </div>
 
         ${
-          p.featured
+          prompt.featured
             ? `<div class="featured-badge">Featured</div>`
             : ""
         }
       </div>
 
       <div class="card-category">
-        ${escapeHTML(p.emoji || "")}
-        ${escapeHTML(p.category || "General")}
+        ${escapeHTML(prompt.emoji || "")}
+        ${escapeHTML(prompt.category || "General")}
       </div>
-
     </div>
 
     <div class="meta-row">
-
       ${
-        p.model
-          ? `<span class="meta-pill">Model: ${escapeHTML(p.model)}</span>`
+        prompt.model
+          ? `
+            <span class="meta-pill">
+              Model: ${escapeHTML(prompt.model)}
+            </span>
+          `
           : ""
       }
 
       ${
-        p.difficulty
-          ? `<span class="meta-pill">Level: ${escapeHTML(p.difficulty)}</span>`
+        prompt.difficulty
+          ? `
+            <span class="meta-pill">
+              Level: ${escapeHTML(prompt.difficulty)}
+            </span>
+          `
           : ""
       }
 
       ${
-        p.pattern
-          ? `<span class="meta-pill">Pattern: ${escapeHTML(p.pattern)}</span>`
+        prompt.pattern
+          ? `
+            <span class="meta-pill">
+              Pattern: ${escapeHTML(prompt.pattern)}
+            </span>
+          `
           : ""
       }
-
     </div>
 
     ${
@@ -329,28 +418,28 @@ function createCard(p) {
     }
 
     <div class="card-desc">
-      ${escapeHTML(p.description || "")}
+      ${escapeHTML(prompt.description || "")}
     </div>
 
     ${
-      p.use_case
+      prompt.use_case
         ? `
-        <div class="info-block">
-          <strong>Use case</strong>
-          <span>${escapeHTML(p.use_case)}</span>
-        </div>
-      `
+          <div class="info-block">
+            <strong>Use case</strong>
+            <span>${escapeHTML(prompt.use_case)}</span>
+          </div>
+        `
         : ""
     }
 
     ${
       whyItWorks
         ? `
-        <div class="why-block">
-          <strong>Why it works</strong>
-          <ul>${whyItWorks}</ul>
-        </div>
-      `
+          <div class="why-block">
+            <strong>Why it works</strong>
+            <ul>${whyItWorks}</ul>
+          </div>
+        `
         : ""
     }
 
@@ -365,72 +454,134 @@ function createCard(p) {
     </div>
 
     ${
-      p.source && p.source.label
+      prompt.source && prompt.source.label
         ? `
-        <div class="source">
-          From:
-          <a href="${escapeHTML(p.source.url)}" target="_blank" rel="noopener">
-            ${escapeHTML(p.source.label)}
-          </a>
-        </div>
-      `
+          <div class="source">
+            From:
+            <a
+              href="${escapeHTML(prompt.source.url)}"
+              target="_blank"
+              rel="noopener"
+            >
+              ${escapeHTML(prompt.source.label)}
+            </a>
+          </div>
+        `
         : ""
     }
 
     <div class="card-actions">
-      <button class="toggle">Show prompt</button>
-      <button class="copy primary">Copy</button>
+      <button class="toggle">
+        Show prompt
+      </button>
+
+      <button class="copy primary">
+        Copy
+      </button>
     </div>
 
-    <pre class="prompt-body">${escapeHTML(p.body || "")}</pre>
+    <pre
+      class="prompt-body"
+      aria-live="polite"
+    ></pre>
   `;
 
-  // TOGGLE
+  const toggleButton =
+    card.querySelector(".toggle");
 
-  const toggleBtn = card.querySelector(".toggle");
-  const copyBtn = card.querySelector(".copy");
-  const promptBody = card.querySelector(".prompt-body");
+  const copyButton =
+    card.querySelector(".copy");
 
-  toggleBtn.addEventListener("click", () => {
+  const promptBody =
+    card.querySelector(".prompt-body");
 
-    const isOpen =
-      promptBody.classList.toggle("open");
+  // ------------------------------
+  // SHOW / HIDE PROMPT
+  // ------------------------------
 
-    toggleBtn.textContent =
-      isOpen
-        ? "Hide prompt"
-        : "Show prompt";
-  });
+  toggleButton.addEventListener(
+    "click",
+    async () => {
+      const isOpen =
+        promptBody.classList.contains("open");
 
-  // COPY
+      // Close the prompt when already open.
+      if (isOpen) {
+        promptBody.classList.remove("open");
+        toggleButton.textContent = "Show prompt";
+        return;
+      }
 
-  copyBtn.addEventListener("click", async () => {
+      promptBody.classList.add("open");
+      promptBody.textContent = "Loading prompt...";
 
-    try {
+      toggleButton.disabled = true;
+      toggleButton.textContent = "Loading...";
 
-      await navigator.clipboard.writeText(
-        p.body || ""
-      );
+      try {
+        const body = await loadPromptBody(prompt);
 
-      const oldText = copyBtn.textContent;
+        promptBody.textContent =
+          body || "No prompt content available.";
 
-      copyBtn.textContent = "Copied!";
-      copyBtn.classList.add("copied");
+        toggleButton.textContent = "Hide prompt";
 
-      setTimeout(() => {
-        copyBtn.textContent = oldText;
-        copyBtn.classList.remove("copied");
-      }, 1200);
+      } catch (error) {
+        console.error(error);
 
-    } catch {
+        promptBody.textContent =
+          "The prompt could not be loaded. " +
+          "Please check the body_file path.";
 
-      copyBtn.textContent = "Copy failed";
+        toggleButton.textContent = "Hide prompt";
 
-      setTimeout(() => {
-        copyBtn.textContent = "Copy";
-      }, 1200);
+      } finally {
+        toggleButton.disabled = false;
+      }
     }
-  });
+  );
+
+  // ------------------------------
+  // COPY PROMPT
+  // ------------------------------
+
+  copyButton.addEventListener(
+    "click",
+    async () => {
+      const originalText =
+        copyButton.textContent;
+
+      copyButton.disabled = true;
+      copyButton.textContent = "Loading...";
+
+      try {
+        const body = await loadPromptBody(prompt);
+
+        if (!body.trim()) {
+          throw new Error(
+            "The prompt body is empty."
+          );
+        }
+
+        await navigator.clipboard.writeText(body);
+
+        copyButton.textContent = "Copied!";
+        copyButton.classList.add("copied");
+
+      } catch (error) {
+        console.error(error);
+
+        copyButton.textContent = "Copy failed";
+
+      } finally {
+        setTimeout(() => {
+          copyButton.textContent = originalText;
+          copyButton.classList.remove("copied");
+          copyButton.disabled = false;
+        }, 1200);
+      }
+    }
+  );
 
   return card;
 }
@@ -440,19 +591,18 @@ function createCard(p) {
 // ------------------------------
 
 function renderGrid() {
-
   const list = filterList();
 
   gridEl.innerHTML = "";
 
   if (resultCountEl) {
-
     resultCountEl.textContent =
-      `${list.length} prompt${list.length === 1 ? "" : "s"} found`;
+      `${list.length} prompt${
+        list.length === 1 ? "" : "s"
+      } found`;
   }
 
   if (emptyStateEl) {
-
     emptyStateEl.classList.toggle(
       "show",
       list.length === 0
@@ -460,7 +610,9 @@ function renderGrid() {
   }
 
   list.forEach(prompt => {
-    gridEl.appendChild(createCard(prompt));
+    gridEl.appendChild(
+      createCard(prompt)
+    );
   });
 }
 
@@ -468,19 +620,21 @@ function renderGrid() {
 // EVENTS
 // ------------------------------
 
-searchEl.addEventListener("input", () => {
+if (searchEl) {
+  searchEl.addEventListener("input", () => {
+    state.search = searchEl.value;
 
-  state.search = searchEl.value;
+    renderGrid();
+  });
+}
 
-  renderGrid();
-});
+if (sortEl) {
+  sortEl.addEventListener("change", () => {
+    state.sort = sortEl.value;
 
-sortEl.addEventListener("change", () => {
-
-  state.sort = sortEl.value;
-
-  renderGrid();
-});
+    renderGrid();
+  });
+}
 
 // ------------------------------
 // START
