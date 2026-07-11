@@ -5,7 +5,7 @@ category: Prompt Engineering
 emoji: 🧠
 model: ChatGPT
 use_case: Iterative ChatGPT prompt refinement
-description: Automatic workflow test.
+description: Step-by-step workshop to craft the strongest possible reusable ChatGPT prompt.
 tags:
   - prompt engineering
   - iteration
