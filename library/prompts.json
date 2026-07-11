@@ -109,8 +109,7 @@
     "emoji": "🧠",
     "model": "ChatGPT",
     "use_case": "Iterative ChatGPT prompt refinement",
-    "description": "Step-by-step workshop to craft the perfect ChatGPT prompt.",
-    "body_file": "prompts/iterative-chatgpt-prompt-generator.md",
+    "description": "Step-by-step workshop to craft the strongest possible reusable ChatGPT prompt.",
     "tags": [
       "prompt engineering",
       "iteration",
@@ -118,11 +117,6 @@
       "refinement"
     ],
     "created_at": "2025-11-15",
-    "source": {
-      "type": "",
-      "label": "",
-      "url": ""
-    },
     "featured": true,
     "pattern": "Iteration Loop",
     "difficulty": "Beginner",
@@ -134,7 +128,8 @@
       "Prompt Engineers",
       "Knowledge Workers"
     ],
-    "quality_score": 93
+    "quality_score": 93,
+    "body_file": "prompts/iterative-chatgpt-prompt-generator.md"
   },
   {
     "id": "10x-ai-image-prompt-generator",
